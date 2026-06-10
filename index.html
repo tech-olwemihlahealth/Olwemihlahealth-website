@@ -586,4 +586,286 @@
                         </div>
 
                         <div class="flex gap-4 border-t border-slate-100 pt-6 group">
-                            <div class="w-
+                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0 group-hover:bg-medicalNavy group-hover:text-white transition-colors duration-300">P</div>
+                            <div>
+                                <h4 class="font-bold text-darkNavy text-sm uppercase tracking-wider">Phone & Digital Channels</h4>
+                                <p class="text-slate-600 text-sm mt-1"><strong>Call Center (Voice Only):</strong> 070 507 1168</p>
+                                <p class="text-slate-600 text-sm"><strong>Email (General):</strong> info@olwemihlahealth.co.za</p>
+                                <p class="text-slate-600 text-sm"><strong>Email (Bookings):</strong> bookings@olwemihlahealth.co.za</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="bg-white border border-slate-200 p-2 shadow-xl rounded-2xl group relative overflow-hidden h-[340px]">
+                        <a href="https://maps.google.com/?q=1+Chestnut+Crescent,+Marianhill,+South+Africa" target="_blank" class="absolute inset-0 z-20 bg-transparent flex flex-col items-center justify-center group-hover:bg-darkNavy/10 transition-colors">
+                            <span class="bg-darkNavy text-white px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 shadow-xl transition-opacity duration-300 pointer-events-none">📍 Open Live Google Maps Navigation 🗺️</span>
+                        </a>
+                        <iframe src="https://maps.google.com/maps?q=1%20Chestnut%20Crescent,%20Marianhill,%20South%20Africa&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full rounded-xl z-10 relative"></iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:px-24">
+            <div class="bg-white border border-slate-200 p-6 shadow-xl rounded-2xl">
+                <h3 class="text-lg font-bold text-darkNavy mb-2">Send a Direct Office Inquiry</h3>
+                <form id="officeinquiryform" action="https://formsubmit.co/bookings@olwemihlahealth.co.za" method="POST" target="hidden_iframe" onsubmit="triggerFormSuccessNotification('officeinquiryform')" class="space-y-4">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="New Website Inquiry Payload Received!">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <input type="text" name="Patient Name" required placeholder="Your Name" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                        <input type="tel" name="Phone Number" required placeholder="Contact Number" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                    </div>
+                    <textarea name="Patient Message Payload" rows="4" required placeholder="Write your questions here..." class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white"></textarea>
+                    <button type="submit" class="w-full bg-medicalNavy text-white font-semibold py-3 rounded-xl text-sm shadow-md transition-all">Send Office Dispatch</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="bookingModal" class="fixed inset-0 z-50 overflow-y-auto hidden bg-darkNavy/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalContainer">
+            <div class="bg-darkNavy text-white p-6 border-b border-medicalGold flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">Request Appointment Slot</h3>
+                <button onclick="closeBookingModal()" class="text-slate-400 hover:text-white text-xl font-bold">×</button>
+            </div>
+            <form id="modalbookingform" action="https://formsubmit.co/bookings@olwemihlahealth.co.za" method="POST" target="hidden_iframe" onsubmit="triggerFormSuccessNotification('modalbookingform')" class="p-6 space-y-4">
+                <input type="hidden" name="_subject" value="⚠️ High Priority Appointment Slot Request Recieved!">
+                <input type="hidden" name="_template" value="box">
+                <input type="text" name="Full Name" required placeholder="Patient Full Name" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                <input type="tel" name="Callback Contact" required placeholder="Contact Phone Number" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                <input type="date" name="Target Appointment Date" required class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                <button type="submit" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl text-sm transition shadow-lg">Confirm Slot Request</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <a href="tel:0705071168" aria-label="Call Medical Desk Now" class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 active:scale-90 transform transition-all duration-200 animate-bounce shadow-blue-600/40">
+            <span class="text-white filter drop-shadow">📞</span>
+        </a>
+        <button onclick="toggleAIBotWindow()" aria-label="Open Interactive AI Helper" class="w-14 h-14 bg-medicalNavy text-white rounded-full shadow-2xl border border-medicalGold/30 flex items-center justify-center text-xl hover:scale-110 active:scale-90 transition-all duration-200 relative">
+            <span class="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-ping"></span>🤖
+        </button>
+    </div>
+
+    <div id="aiBotWindow" class="fixed bottom-24 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden hidden flex-col z-50 transform scale-95 opacity-0 transition-all duration-300">
+        <div class="bg-darkNavy p-4 text-white border-b border-medicalGold flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg overflow-hidden border border-medicalGold/30 bg-white p-0.5"><img src="Amahle.jpeg" class="w-full h-full object-cover rounded-md"></div>
+                <div>
+                    <h4 class="text-xs font-bold text-white tracking-wide">Olwemihla Virtual Assistant</h4>
+                    <span class="text-[9px] text-green-400 block font-medium">● AI Operational Desk Agent Online</span>
+                </div>
+            </div>
+            <button onclick="toggleAIBotWindow()" class="text-slate-400 hover:text-white text-lg font-bold">×</button>
+        </div>
+        <div id="chatBoxContainer" class="chat-container p-4 space-y-3 bg-slate-50/50 text-xs">
+            <div class="bg-white border border-slate-200 p-3 rounded-xl text-slate-700 shadow-sm max-w-[85%]">
+                Sanibonani! 👋 I can answer questions about Dr Dimba's hours, cash consultation fees (R500), circumcision metrics, or location maps instantly!
+            </div>
+        </div>
+        <div class="p-2 border-t border-slate-100 bg-white flex flex-wrap gap-1.5 text-[10px]">
+            <button onclick="triggerAISuggestion('What are your hours?')" class="bg-slate-100 hover:bg-medicalNavy hover:text-white px-2 py-1 rounded-full transition text-slate-600 font-medium">⏱ Hours</button>
+            <button onclick="triggerAISuggestion('How much is a cash consultation?')" class="bg-slate-100 hover:bg-medicalNavy hover:text-white px-2 py-1 rounded-full transition text-slate-600 font-medium">💵 Cash Rates</button>
+            <button onclick="triggerAISuggestion('Do you do circumcisions?')" class="bg-slate-100 hover:bg-medicalNavy hover:text-white px-2 py-1 rounded-full transition text-slate-600 font-medium">✂ Circumcisions</button>
+        </div>
+        <form onsubmit="handleAIChatQueryDispatch(event)" class="border-t border-slate-200 p-3 bg-slate-50 flex gap-2">
+            <input type="text" id="aiInputPrompt" required placeholder="Type your query here..." class="flex-grow border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-medicalNavy bg-white">
+            <button type="submit" class="bg-medicalNavy hover:bg-darkNavy text-white font-semibold px-4 py-2 rounded-xl text-xs transition">Ask</button>
+        </form>
+    </div>
+
+    <footer class="bg-darkNavy text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <span class="text-base font-bold text-white tracking-tight block">Olwemihla Health Services</span>
+                <p class="leading-relaxed text-slate-400">Serving the Marianhill community with continuous clinical excellence and exceptional general medical consulting protocols.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Patient Links</h4>
+                <ul class="space-y-2">
+                    <li><button onclick="navigateToTab('services'); resetServiceViews();" class="hover:text-white transition-colors">Medical Offerings</button></li>
+                    <li><button onclick="navigateToTab('about')" class="hover:text-white transition-colors">Clinical Practitioner</button></li>
+                    <li><button onclick="navigateToTab('contact')" class="hover:text-white transition-colors">Hours & Location Map</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Statutory Declarations</h4>
+                <p class="leading-relaxed">Dr Dimba</p>
+                <p class="leading-relaxed">Pr No: 1332546</p>
+                <p class="mt-2 text-medicalGold">HPCSA General Outpatient Care Framework</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Medical Aid Access</h4>
+                <p class="leading-relaxed">We settle direct automated claims across the vast majority of medical aid structures in South African territory.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-slate-800/80 text-center text-slate-500">
+            © 2026 Olwemihla Health Services. All Rights Reserved. Built securely for olwemihlahealth.co.za.
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
+        });
+
+        // Toggle Sidebar Function
+        function toggleSidebar(shouldOpen) {
+            const menu = document.getElementById('sidebarMenu');
+            if (shouldOpen) {
+                menu.classList.add('open-drawer');
+                menu.style.transform = "translateX(0)";
+            } else {
+                menu.classList.remove('open-drawer');
+                menu.style.transform = "translateX(-100%)";
+            }
+        }
+
+        // Global Navigation Router
+        function navigateToTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active-tab'));
+            const activeTarget = document.getElementById('tab-' + tabId);
+            if(activeTarget) activeTarget.classList.add('active-tab');
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-medicalNavy', 'font-semibold', 'bg-slate-100');
+                link.classList.add('hover:text-medicalNavy', 'hover:bg-slate-50');
+            });
+            const selectedNavLink = document.getElementById('nav-' + tabId);
+            if(selectedNavLink) selectedNavLink.classList.add('text-medicalNavy', 'font-semibold', 'bg-slate-100');
+            
+            if (tabId === 'rates') {
+                animateCashOdometer(0, 500, 1200);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Cash Rate Odometer script engine
+        function animateCashOdometer(startValue, endValue, duration) {
+            const targetNode = document.getElementById('cashRateOdometer');
+            if (!targetNode) return;
+            
+            let startTime = null;
+            function step(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
+                targetNode.innerText = currentValue;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            }
+            window.requestAnimationFrame(step);
+        }
+
+        // Safe Background submission pipeline
+        function triggerFormSuccessNotification(formElementId) {
+            if(formElementId === 'modalbookingform') {
+                closeBookingModal();
+            }
+            setTimeout(() => {
+                alert("Success! Your medical dispatch payload has been sent successfully. Our reception desk has received the secure data log and will contact you shortly.");
+                document.getElementById(formElementId).reset();
+                navigateToTab('home');
+            }, 500);
+        }
+
+        function navigateToSubService(subviewId) {
+            navigateToTab('services');
+            document.getElementById('services-main-list').classList.remove('block');
+            document.getElementById('services-main-list').classList.add('hidden');
+            const subviews = document.querySelectorAll('.service-subview');
+            subviews.forEach(view => view.classList.remove('active-subview'));
+            const activeSubview = document.getElementById('subview-' + subviewId);
+            if(activeSubview) activeSubview.classList.add('active-subview');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetServiceViews() {
+            document.getElementById('services-main-list').classList.remove('hidden');
+            document.getElementById('services-main-list').classList.add('block');
+            const subviews = document.querySelectorAll('.service-subview');
+            subviews.forEach(view => view.classList.remove('active-subview'));
+        }
+
+        function openBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.remove('hidden');
+            setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 50);
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            const container = document.getElementById('modalContainer');
+            container.classList.remove('scale-100', 'opacity-100'); container.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function toggleAIBotWindow() {
+            const panel = document.getElementById('aiBotWindow');
+            if(panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                setTimeout(() => panel.classList.remove('scale-95', 'opacity-0'), 50);
+            } else {
+                panel.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => panel.classList.add('hidden'), 300);
+            }
+        }
+
+        function triggerAISuggestion(textValue) {
+            document.getElementById('aiInputPrompt').value = textValue;
+            executeAIProcessingLogic(textValue);
+        }
+
+        function handleAIChatQueryDispatch(e) {
+            e.preventDefault();
+            const input = document.getElementById('aiInputPrompt');
+            executeAIProcessingLogic(input.value);
+        }
+
+        function executeAIProcessingLogic(query) {
+            if(!query.trim()) return;
+            const chatBox = document.getElementById('chatBoxContainer');
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-medicalNavy text-white p-3 rounded-xl ml-auto text-right max-w-[85%] shadow-sm animate-reveal";
+            userBubble.innerText = query;
+            chatBox.appendChild(userBubble);
+            
+            const normalizedQuery = query.toLowerCase();
+            let aiResponseText = "I apologize, I didn't quite catch that. Please phone our main reception line directly at 070 507 1168 for assistance!";
+            
+            if(normalizedQuery.includes('hour') || normalizedQuery.includes('time') || normalizedQuery.includes('open')) {
+                aiResponseText = "Dr Dimba's practice is open Monday to Sunday, including public holidays, from 08:00 until 17:00 daily.";
+            } else if(normalizedQuery.includes('rate') || normalizedQuery.includes('cash') || normalizedQuery.includes('fee') || normalizedQuery.includes('cost') || normalizedQuery.includes('much')) {
+                aiResponseText = "A standard cash general consultation with Dr Dimba is R 500. Settle via cash or card at the front desk reception.";
+            } else if(normalizedQuery.includes('circumcision') || normalizedQuery.includes('procedure') || normalizedQuery.includes('minor')) {
+                aiResponseText = "Yes, Dr Dimba performs safe medical circumcisions in our outpatient treatment suite with local anesthetic block applications. Tap 'Book Appointment' to get started.";
+            } else if(normalizedQuery.includes('where') || normalizedQuery.includes('address') || normalizedQuery.includes('location')) {
+                aiResponseText = "We are located at 1 Chestnut Crescent, Shop 5, Marianhill, 3607, right next to the Engen filling station (KwaMaMdekazi eduze kwaEngen).";
+            } else if(normalizedQuery.includes('aid') || normalizedQuery.includes('medical aid')) {
+                aiResponseText = "We accept automated electronic claims for major schemes including Discovery, GEMS, and Bonitas Health networks.";
+            }
+
+            setTimeout(() => {
+                const botBubble = document.createElement('div');
+                botBubble.className = "bg-white border border-slate-200 p-3 rounded-xl text-slate-700 shadow-sm max-w-[85%] animate-reveal";
+                botBubble.innerText = aiResponseText;
+                chatBox.appendChild(botBubble);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 450);
+
+            document.getElementById('aiInputPrompt').value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
