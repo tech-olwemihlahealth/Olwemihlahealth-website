@@ -37,7 +37,7 @@
         .tab-content { display: none; }
         .tab-content.active-tab { display: block; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         
-        /* Sub-Service Panel Routing System Animations */
+        /* Sub-Service Router System Layout Animations */
         .service-subview { display: none; }
         .service-subview.active-subview { display: block; animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
@@ -62,6 +62,7 @@
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
 
+        /* PRELOADER INTERACTIVE DISSOLVE ENGINE */
         #preloader {
             position: fixed;
             inset: 0;
@@ -96,6 +97,7 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        /* BURGER SYSTEM SLIDE DRAWER PANELS */
         #sidebarMenu {
             transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -153,16 +155,19 @@
                             <button onclick="navigateToSubService('minor-procedures')" class="w-full text-left text-xs text-slate-300 font-semibold hover:text-medicalGold py-1 block transition-colors flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-medicalGold"></span> Minor Procedures (Circumcisions)
                             </button>
+                            <button onclick="navigateToSubService('chronic-management')" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Chronic Disease Management</button>
+                            <button onclick="navigateToSubService('wellness-screenings')" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Wellness Screenings</button>
+                            <button onclick="navigateToSubService('patient-education')" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Patient Education</button>
                         </div>
                     </div>
 
                     <button onclick="navigateToTab('about')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between group">
-                        <span>About Dr Dimba</span>
+                        <span>About the Doctor</span>
                         <span class="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
                     </button>
                     
                     <button onclick="navigateToTab('contact')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between group">
-                        <span>Practice Hours & Directions</span>
+                        <span>Contact & Hours</span>
                         <span class="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
                     </button>
                 </nav>
@@ -170,7 +175,7 @@
 
             <div class="border-t border-slate-800/80 pt-4 text-center">
                 <p class="text-[10px] text-slate-500">Practice Number: Pr No: 1332546</p>
-                <button onclick="openBookingModal()" class="mt-3 w-full bg-medicalGold text-darkNavy font-bold py-2 rounded-lg text-xs hover:bg-white transition-colors shadow-lg shadow-medicalGold/10">
+                <button onclick="openBookingModal()" class="mt-3 w-full bg-medicalGold text-darkNavy font-bold py-2 rounded-lg text-xs hover:bg-white transition-colors shadow-lg">
                     Direct Triage Booking
                 </button>
             </div>
@@ -190,7 +195,7 @@
         </div>
     </div>
 
-    <nav class="sticky top-0 w-full z-30 glassmorphism border-b border-slate-200/80 shadow-sm transition-all duration-300">
+    <nav class="sticky top-0 w-full z-30 glassmorphism border-b border-slate-200/80 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer group md:pl-16" onclick="navigateToTab('home')">
                 <div class="w-10 h-10 bg-medicalNavy text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-md border border-medicalGold/40 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">O</div>
@@ -201,15 +206,15 @@
             </div>
 
             <div class="hidden md:flex items-center space-x-1 font-medium text-sm text-slate-600">
-                <button onclick="navigateToTab('home')" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100/80 transition-all duration-300">Home</button>
-                <button onclick="navigateToTab('services'); resetServiceViews();" id="nav-services" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-100/50 transition-all duration-300">Our Services</button>
-                <button onclick="navigateToTab('about')" id="nav-about" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-100/50 transition-all duration-300">About the Doctor</button>
-                <button onclick="navigateToTab('contact')" id="nav-contact" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-100/50 transition-all duration-300">Contact & Hours</button>
+                <button onclick="navigateToTab('home')" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">Home</button>
+                <button onclick="navigateToTab('services'); resetServiceViews();" id="nav-services" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">Our Services</button>
+                <button onclick="navigateToTab('about')" id="nav-about" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">About the Doctor</button>
+                <button onclick="navigateToTab('contact')" id="nav-contact" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">Contact & Hours</button>
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="tel:0705071168" class="hidden sm:inline-flex items-center text-sm font-semibold text-medicalNavy bg-white border border-slate-300 hover:border-medicalNavy hover:shadow-md px-4 py-2 rounded-xl transition-all duration-300">Call Practice</a>
-                <button onclick="openBookingModal()" class="bg-medicalNavy text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-darkNavy hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg border-b-2 border-medicalGold">Book Appointment</button>
+                <a href="tel:0705071168" class="hidden sm:inline-flex items-center text-sm font-semibold text-medicalNavy bg-white border border-slate-300 hover:border-medicalNavy px-4 py-2 rounded-xl transition duration-200 shadow-sm">Call Practice</a>
+                <button onclick="openBookingModal()" class="bg-medicalNavy text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-darkNavy hover:scale-105 transition-all duration-200 shadow-lg border-b-2 border-medicalGold">Book Appointment</button>
             </div>
         </div>
     </nav>
@@ -230,16 +235,60 @@
                             Quality primary healthcare curated meticulously for you and your family. Visit Dr Dimba at our modern, welcoming medical facility.
                         </p>
                         <div class="mt-8 flex flex-wrap gap-4 animate-reveal delay-2">
-                            <button onclick="navigateToTab('services'); resetServiceViews();" class="bg-medicalNavy hover:bg-darkNavy text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:-translate-y-0.5 shadow-md">Explore Services</button>
-                            <button onclick="navigateToTab('contact')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 px-6 py-3 rounded-xl font-medium transition-all duration-300">View Operating Hours</button>
+                            <button onclick="navigateToTab('services'); resetServiceViews();" class="bg-medicalNavy hover:bg-darkNavy text-white px-6 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">Explore Services</button>
+                            <button onclick="navigateToTab('contact')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 px-6 py-3 rounded-xl font-medium transition">View Operating Hours</button>
+                        </div>
+                        
+                        <div class="mt-12 pt-8 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-500 animate-reveal delay-2">
+                            <div>
+                                <p class="font-semibold text-slate-800 text-sm">Most Medical Aids</p>
+                                <p>Accepted directly at reception</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-800 text-sm">Full Medical Screenings</p>
+                                <p>Preventative diagnostic evaluations</p>
+                            </div>
                         </div>
                     </div>
                     <div class="lg:col-span-5 relative animate-float">
-                        <div class="absolute -inset-2 bg-gradient-to-r from-medicalGold to-medicalNavy rounded-2xl blur-2xl opacity-20 transform rotate-3 animate-pulse"></div>
-                        <div class="relative bg-white p-3 rounded-2xl shadow-xl border border-slate-100 transform hover:scale-[1.02] transition-transform duration-500">
-                            <img src="Amahle.jpg" alt="Olwemihla Medical Workspace" class="rounded-xl w-full h-[400px] object-cover shadow-inner">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-medicalGold to-medicalNavy rounded-2xl blur-2xl opacity-15 transform rotate-3 animate-pulse"></div>
+                        <div class="relative bg-white p-3 rounded-2xl shadow-xl border border-slate-100 transform hover:scale-[1.02] transition-all duration-500">
+                            <img src="Amahle.jpg" alt="Olwemihla Workspace" class="rounded-xl w-full h-[400px] object-cover shadow-inner">
+                            <div class="absolute bottom-6 left-6 right-6 bg-darkNavy/90 backdrop-blur-md p-4 rounded-xl text-white border-l-4 border-medicalGold">
+                                <p class="text-xs text-medicalGold uppercase font-bold tracking-widest">Our Direct Priority</p>
+                                <p class="font-medium text-sm mt-0.5">"Your Health, Our Absolute Commitment."</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-darkNavy">Comprehensive Clinical Pillars</h2>
+                    <p class="text-slate-500 mt-2">Professional outpatient general practice procedures built around an optimal patient experience.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:px-16">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">GC</div>
+                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">General Consultations</h3>
+                        <p class="text-slate-500 text-sm mt-2">Routine clinical check-ups, diagnostic acute illness management, and preventative healthcare mapping.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MC</div>
+                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Medical Certificates</h3>
+                        <p class="text-slate-500 text-sm mt-2">Compliant professional verification evaluations for work, school readiness, and statutory requirements.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MP</div>
+                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Minor Surgical Procedures</h3>
+                        <p class="text-slate-500 text-sm mt-2">Safe clinical operations including <strong>circumcisions</strong>, sterile wound care, and local anesthetic repairs.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <button onclick="navigateToTab('services'); resetServiceViews();" class="text-medicalNavy font-semibold text-sm inline-flex items-center gap-2 hover:gap-4 transition-all duration-200 group">
+                        View All Healthcare Offerings <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </button>
                 </div>
             </section>
         </div>
@@ -250,7 +299,7 @@
                 <section class="py-12 bg-white border-b border-slate-100">
                     <div class="max-w-4xl mx-auto text-center px-4">
                         <h1 class="text-3xl sm:text-4xl font-bold text-darkNavy">Clinical Medical Portfolio</h1>
-                        <p class="text-slate-500 mt-2">Click on any core service category below to explore details, procedures, and patient operational guidelines.</p>
+                        <p class="text-slate-500 mt-2">Click on any core service category card below to expand into highly detailed medical outlines and guidelines.</p>
                     </div>
                 </section>
                 
@@ -264,8 +313,8 @@
                                 <h3 class="text-xl font-bold text-white relative z-10">General Consultations</h3>
                             </div>
                             <div class="p-6">
-                               <p class="text-slate-600 text-sm leading-relaxed mb-4">Comprehensive medical exams, acute sickness mapping, and pediatric primary tracking options...</p>
-                               <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold transition-colors inline-flex items-center gap-1">Read Deep-Dive Analysis <span>→</span></span>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Comprehensive evaluation of underlying clinical profiles. This involves direct acute symptom tracking, prescriptive intervention regimens...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
                             </div>
                         </div>
 
@@ -276,8 +325,8 @@
                                 <h3 class="text-xl font-bold text-white relative z-10">Medical Certificates</h3>
                             </div>
                             <div class="p-6">
-                               <p class="text-slate-600 text-sm leading-relaxed mb-4">Official workplace verification clearances, return-to-work compliance diagnostics, and academic sick notes...</p>
-                               <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold transition-colors inline-flex items-center gap-1">Read Deep-Dive Analysis <span>→</span></span>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Official medical documentation following rigorous clinical examinations. Fully aligned with South African statutory guidelines...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
                             </div>
                         </div>
 
@@ -285,12 +334,48 @@
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <span class="absolute top-3 right-3 bg-medicalGold text-darkNavy text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Highly Requested</span>
+                                <span class="absolute top-3 right-3 bg-medicalGold text-darkNavy text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">In-Demand</span>
                                 <h3 class="text-xl font-bold text-white relative z-10">Minor Procedures</h3>
                             </div>
                             <div class="p-6">
-                               <p class="text-slate-600 text-sm leading-relaxed mb-4">Outpatient clinical care operations including <strong>medical circumcisions</strong>, sterile tissue suturing, and local anesthetics...</p>
-                               <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold transition-colors inline-flex items-center gap-1">Read Deep-Dive Analysis <span>→</span></span>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Outpatient surgical actions completed inside our customized emergency intervention suite including <strong>medical circumcisions</strong>...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                            </div>
+                        </div>
+
+                        <div onclick="navigateToSubService('chronic-management')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                            <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
+                                <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
+                                <h3 class="text-xl font-bold text-white relative z-10">Chronic Disease Management</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Continuous therapeutic management protocols designed for long-term health anomalies. We focus on lifestyle engineering...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                            </div>
+                        </div>
+
+                        <div onclick="navigateToSubService('wellness-screenings')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                            <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
+                                <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
+                                <h3 class="text-xl font-bold text-white relative z-10">Wellness Screenings</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Proactive diagnostic biological system stress reviews aimed at isolating dynamic health metrics before symptoms occur...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                            </div>
+                        </div>
+
+                        <div onclick="navigateToSubService('patient-education')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                            <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
+                                <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
+                                <h3 class="text-xl font-bold text-white relative z-10">Patient Education</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Dedicated counseling frameworks designed to empower families with practical health knowledge, enabling confident care...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
                             </div>
                         </div>
 
@@ -298,97 +383,115 @@
                 </section>
             </div>
 
-            <div id="subview-general-consultations" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-16">
-                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">
-                    <span>←</span> Back to Services Portfolio
-                </button>
+            <div id="subview-general-consultations" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl transform hover:shadow-2xl transition-all">
+                    <div class="h-64 bg-darkNavy relative p-8 flex items-end">
+                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm">
+                        <div class="relative z-10">
+                            <h2 class="text-3xl font-bold text-white">General Consultations Spectrum</h2>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-4 text-sm text-slate-600 leading-relaxed">
+                        <p>Dr Dimba provides clinical out-patient consultations, evaluating acute disease progression trends and offering meticulous prescriptive advice to secure system recovery protocols for families in the Marianhill ecosystem.</p>
+                        <ul class="list-disc pl-5 space-y-1.5 text-xs text-slate-500">
+                            <li>Comprehensive Adult & Pediatric Health Diagnosis Tracking</li>
+                            <li>Acute Infection Treatment, Prescription Management & Vital Monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="subview-medical-certificates" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
+                    <div class="h-64 bg-darkNavy relative p-8 flex items-end">
+                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-25 grayscale mix-blend-overlay">
+                        <div class="relative z-10">
+                            <h2 class="text-3xl font-bold text-white">Statutory Medical Certifications</h2>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-4 text-sm text-slate-600 leading-relaxed">
+                        <p>All certifications are processed in absolute compliance with ethical South African medical parameters, mapping return-to-work fitness evaluations or official sick leaves securely under registered ledger indexes ($Pr\ No:\ 1332546$).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="subview-minor-procedures" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl ring-2 ring-medicalGold/40">
+                    <div class="h-64 bg-darkNavy relative p-8 flex items-end">
+                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40 transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent"></div>
+                        <div class="relative z-10">
+                            <span class="text-xs font-bold uppercase text-medicalGold bg-medicalNavy/80 px-2 py-0.5 rounded">Specialized Clinic Procedures</span>
+                            <h2 class="text-3xl font-bold text-white mt-1">Minor Outpatient Procedures & Circumcisions</h2>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-6">
+                        <p class="text-sm text-slate-600 leading-relaxed">Our surgical suite provides safe outpatient clinical operations under strict sterile guidelines. Dr Dimba specializes in professional **medical circumcisions**, local anesthetic application blocks, tissue stitch care repairs, and abscess drain treatments.</p>
+                        <div class="grid sm:grid-cols-3 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-darkNavy mb-1">1. Sterile Environment</h4>
+                                <p class="text-slate-500">Single-use surgical tool configurations prioritizing total infection control.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-darkNavy mb-1">2. Pain Management</h4>
+                                <p class="text-slate-500">Meticulous nerve-block anesthetic applications for optimal patient comfort.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-darkNavy mb-1">3. Direct Follow-Ups</h4>
+                                <p class="text-slate-500">Scheduled clinical tracking milestones until tissue restoration metrics are locked in.</p>
+                            </div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <button onclick="openBookingModal()" class="bg-medicalNavy text-white font-medium px-6 py-2.5 rounded-xl text-xs hover:bg-darkNavy transition shadow-md">Book Consultation Slot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="subview-chronic-management" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end">
                         <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm">
                         <div class="relative z-10">
-                            <span class="text-xs font-bold tracking-widest uppercase text-medicalGold">Primary Care Matrix</span>
-                            <h2 class="text-3xl font-bold text-white mt-1">General Consultations Deep-Dive</h2>
+                            <h2 class="text-3xl font-bold text-white">Chronic Condition Optimization</h2>
                         </div>
                     </div>
-                    <div class="p-8 space-y-6">
-                        <p class="text-slate-600 leading-relaxed">Dr Dimba provides specialized diagnostic verification loops during comprehensive out-patient consult phases. Every clinical interaction covers deep biological checkups tailored to mitigate latent pathology vectors before they transform into chronic issues.</p>
-                        <div class="grid sm:grid-cols-2 gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                            <div>
-                                <h4 class="font-bold text-darkNavy text-sm mb-2">Pediatric Care Metrics</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Infant development diagnostic metrics, childhood acute diagnostic intervention algorithms, and lifestyle optimization mapping protocols.</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-darkNavy text-sm mb-2">Adult Systems Diagnosis</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed">Acute system analysis for sudden biological variations, respiratory evaluations, infection identification protocols, and prescription optimization.</p>
-                            </div>
-                        </div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed">
+                        <p>Continuous stabilization monitoring pipelines designed for hypertension, sugar metabolic anomalies (diabetes), and long-term diagnostic therapy balances.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="subview-medical-certificates" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-16">
-                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">
-                    <span>←</span> Back to Services Portfolio
-                </button>
+            <div id="subview-wellness-screenings" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end">
-                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale mix-blend-overlay">
+                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm">
                         <div class="relative z-10">
-                            <span class="text-xs font-bold tracking-widest uppercase text-medicalGold">Statutory Verification Documentation</span>
-                            <h2 class="text-3xl font-bold text-white mt-1">Medical Certificates & Compliance</h2>
+                            <h2 class="text-3xl font-bold text-white">Proactive Health Screenings</h2>
                         </div>
                     </div>
-                    <div class="p-8 space-y-6">
-                        <p class="text-slate-600 leading-relaxed">All generated sick notes and fitness confirmations are completed in absolute compliance with the South African Basic Conditions of Employment Act. Dr Dimba evaluates recovery indices and workspace demands thoroughly before logging digital sick leaves.</p>
-                        <div class="bg-medicalNavy/5 p-6 rounded-2xl border-l-4 border-medicalNavy text-sm text-slate-700">
-                            <strong>Note for Employers & Academic Registrars:</strong> Every verification payload printed from our Marianhill facility features an automated transaction tracking reference code back to Dr Dimba’s registered practice index ($Pr\ No:\ 1332546$).
-                        </div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed">
+                        <p>Vital metabolic marker index tests, sugar reviews, cholesterol checks, and cardiovascular risk indicators completed right inside the clinic suite.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="subview-minor-procedures" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-16">
-                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">
-                    <span>←</span> Back to Services Portfolio
-                </button>
-                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl ring-2 ring-medicalGold/40">
-                    <div class="h-72 bg-darkNavy relative p-8 flex items-end">
-                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-35 transform scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-darkNavy combined-to-transparent"></div>
+            <div id="subview-patient-education" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+                <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
+                    <div class="h-64 bg-darkNavy relative p-8 flex items-end">
+                        <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm">
                         <div class="relative z-10">
-                            <span class="text-xs font-bold tracking-widest uppercase text-medicalGold bg-medicalNavy/60 px-2 py-1 rounded">Surgical Outpatient Care Suite</span>
-                            <h2 class="text-4xl font-bold text-white mt-2">Minor Procedures & Circumcisions</h2>
+                            <h2 class="text-3xl font-bold text-white">Patient Counseling Frameworks</h2>
                         </div>
                     </div>
-                    <div class="p-8 space-y-8">
-                        <div>
-                            <h3 class="text-xl font-bold text-darkNavy mb-2">Medical Circumcision Protocol</h3>
-                            <p class="text-slate-600 leading-relaxed text-sm">Dr Dimba performs safe, sterile, minor outpatient surgical operations within our dedicated clinical theatre room. Circumcisions are structured down with rigorous cross-contamination containment protocols, high-precision local anesthetic block applications, and advanced dissolvable suture techniques.</p>
-                        </div>
-                        
-                        <div class="grid sm:grid-cols-3 gap-4">
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <div class="w-8 h-8 bg-medicalGold/10 rounded-full flex items-center justify-center text-medicalGold font-bold text-xs mx-auto mb-2">1</div>
-                                <h4 class="font-bold text-xs text-darkNavy">Pre-Surgical Review</h4>
-                                <p class="text-[11px] text-slate-500 mt-1">Full structural diagnostic analysis, clotting checks, and local anesthetic safety evaluation parameters.</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <div class="w-8 h-8 bg-medicalGold/10 rounded-full flex items-center justify-center text-medicalGold font-bold text-xs mx-auto mb-2">2</div>
-                                <h4 class="font-bold text-xs text-darkNavy">Sterile Theatre Procedure</h4>
-                                <p class="text-[11px] text-slate-500 mt-1">Surgical intervention mapping utilizing top-tier single-use sterile medical instruments for maximum safety metrics.</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-center">
-                                <div class="w-8 h-8 bg-medicalGold/10 rounded-full flex items-center justify-center text-medicalGold font-bold text-xs mx-auto mb-2">3</div>
-                                <h4 class="font-bold text-xs text-darkNavy">Post-Op Recovery Track</h4>
-                                <p class="text-[11px] text-slate-500 mt-1">Direct text-based follow up, wound tracking reviews, and custom post-care clinical directions.</p>
-                            </div>
-                        </div>
-
-                        <div class="text-center pt-4">
-                            <button onclick="openBookingModal()" class="bg-medicalNavy hover:bg-darkNavy text-white px-6 py-3 rounded-xl font-medium transition shadow-md text-sm">
-                                Request a Safe Consultation Slot
-                            </button>
-                        </div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed">
+                        <p>Empowering local families with practical health knowledge, lifestyle habits modifications blueprints, and direct condition maintenance guides.</p>
                     </div>
                 </div>
             </div>
@@ -401,17 +504,31 @@
                     <h1 class="text-3xl font-bold text-darkNavy">Practice Leadership</h1>
                     <p class="text-slate-500 mt-2">Get to know the dedicated general practitioner serving the Marianhill ecosystem.</p>
                 </div>
+                
                 <div class="max-w-4xl">
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-8 hover:shadow-xl transition-all duration-300">
                         <div class="w-full md:w-56 h-56 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 relative group">
                             <img src="Amahle.jpg" class="w-full h-full object-cover object-top filter grayscale hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute inset-0 bg-medicalNavy/10 mix-blend-multiply opacity-50 group-hover:opacity-0 transition-opacity"></div>
                         </div>
                         <div class="flex flex-col justify-center">
                             <span class="text-xs font-bold uppercase tracking-wider text-medicalGold">General Practitioner</span>
                             <h3 class="text-3xl font-bold text-darkNavy mt-1">Dr Dimba</h3>
                             <p class="text-xs text-slate-400 font-semibold mt-1">Practice Number: Pr No: 1332546</p>
-                            <p class="text-slate-600 text-sm mt-4 leading-relaxed">Dr Dimba is committed to delivering accessible, highly structured clinical primary care. He specializes in advanced long-term chronic disease control, safe minor operations, and circumcision tracking metrics.</p>
+                            <p class="text-slate-600 text-sm mt-4 leading-relaxed">
+                                Dr Dimba is committed to delivering accessible, highly structured clinical primary care. He specializes in advanced long-term chronic condition management, safe minor surgical operations (including <strong>circumcisions</strong>), and comprehensive family diagnostic screenings. His practice philosophy bridges rigorous clinical thoroughness with compassionate, patient-centered community engagement.
+                            </p>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-darkNavy text-white p-8 rounded-2xl relative overflow-hidden max-w-4xl shadow-lg">
+                    <img src="Amahle.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 blur-sm transform scale-105">
+                    <div class="relative z-10 max-w-2xl">
+                        <h4 class="text-medicalGold font-bold uppercase tracking-wider text-xs">Our Core Medical Commitment</h4>
+                        <p class="text-xl mt-2 font-light leading-relaxed">
+                            "We are dedicated to removing systemic clinical friction for families across Marianhill, offering exceptional diagnostic thoroughness combined with accessible, compassionate community care."
+                        </p>
                     </div>
                 </div>
             </section>
@@ -419,33 +536,96 @@
 
         <div id="tab-contact" class="tab-content">
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-12 gap-12 md:px-24">
+                
                 <div class="lg:col-span-5 space-y-8">
                     <div>
                         <h1 class="text-3xl font-bold text-darkNavy">Get in Touch</h1>
                         <p class="text-slate-500 text-sm mt-1">Contact information for Olwemihla Health Services.</p>
                     </div>
+
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 space-y-6 shadow-sm">
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0">A</div>
+                        <div class="flex gap-4 group">
+                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0 group-hover:bg-medicalNavy group-hover:text-white transition-colors duration-300">A</div>
                             <div>
                                 <h4 class="font-bold text-darkNavy text-sm uppercase tracking-wider">Physical Address</h4>
-                                <p class="text-slate-600 text-sm mt-1">1 Chestnut Crescent, Shop 5, Marianhill, 3607 <span class="text-xs text-medicalGold font-semibold block">(KwaMaMdekazi eduze kwaEngen)</span></p>
+                                <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                                    1 Chestnut Crescent, Shop 5<br>
+                                    Marianhill, 3607<br>
+                                    <span class="text-xs text-medicalGold font-semibold">(KwaMaMdekazi eduze kwaEngen)</span>
+                                </p>
                             </div>
                         </div>
-                        <div class="flex gap-4 border-t border-slate-100 pt-6">
-                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0">P</div>
+
+                        <div class="flex gap-4 border-t border-slate-100 pt-6 group">
+                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0 group-hover:bg-medicalNavy group-hover:text-white transition-colors duration-300">P</div>
                             <div>
-                                <h4 class="font-bold text-darkNavy text-sm uppercase tracking-wider">Phone</h4>
-                                <p class="text-slate-600 text-sm mt-1">070 507 1168</p>
+                                <h4 class="font-bold text-darkNavy text-sm uppercase tracking-wider">Phone & Digital Channels</h4>
+                                <p class="text-slate-600 text-sm mt-1"><strong>Call/WhatsApp:</strong> 070 507 1168</p>
+                                <p class="text-slate-600 text-sm"><strong>Email Contact:</strong> info@olwemihlahealth.co.za</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkNavy text-white rounded-2xl p-6 shadow-md border-b-4 border-medicalGold transform hover:scale-[1.01] transition-all duration-300">
+                        <h4 class="font-bold text-medicalGold uppercase tracking-wider text-xs mb-4">Official Operating Matrix</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-300">Monday – Friday</span>
+                                <span class="font-semibold text-white">08:00 – 17:00</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-300">Saturday</span>
+                                <span class="font-semibold text-white">08:00 – 17:00</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-300">Sunday</span>
+                                <span class="font-semibold text-white">08:00 – 17:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-300">Public Holidays</span>
+                                <span class="font-semibold text-white">08:00 – 17:00</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-7">
-                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm h-[320px] relative">
-                        <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="absolute inset-0 w-full h-full"></iframe>
+
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm h-[320px] relative hover:shadow-md transition-shadow">
+                        <iframe 
+                            src="http://googleusercontent.com/maps.google.com/6" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            class="absolute inset-0 w-full h-full">
+                        </iframe>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 p-6 shadow-sm focus-within:shadow-md transition-all rounded-2xl">
+                        <h3 class="text-lg font-bold text-darkNavy mb-4">Send a Direct Office Inquiry</h3>
+                        <form id="contactForm" onsubmit="handleContactFormSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Your Name</label>
+                                    <input type="text" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/10 transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Contact Number</label>
+                                    <input type="tel" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/10 transition-all">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Inquiry Message</label>
+                                <textarea rows="4" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/10 transition-all" placeholder="Please write your questions here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-medicalNavy hover:bg-darkNavy text-white font-semibold py-3 rounded-xl text-sm transition-all transform hover:-translate-y-0.5 shadow-md">
+                                Send Office Dispatch
+                            </button>
+                        </form>
                     </div>
                 </div>
+
             </section>
         </div>
 
@@ -461,18 +641,43 @@
                 <input type="text" required placeholder="Patient Full Name" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy">
                 <input type="tel" required placeholder="Contact Phone Number" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy">
                 <input type="date" required class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy">
-                <button type="submit" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl text-sm transition">Confirm Slot Request</button>
+                <button type="submit" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl text-sm transition shadow-lg">Confirm Slot Request</button>
             </form>
         </div>
     </div>
 
     <footer class="bg-darkNavy text-slate-400 text-xs py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 text-center text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <span class="text-base font-bold text-white tracking-tight block">Olwemihla Health Services</span>
+                <p class="leading-relaxed text-slate-400">Serving the Marianhill community with continuous clinical excellence and exceptional general medical consulting protocols.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Patient Links</h4>
+                <ul class="space-y-2">
+                    <li><button onclick="navigateToTab('services'); resetServiceViews();" class="hover:text-white transition-colors">Medical Offerings</button></li>
+                    <li><button onclick="navigateToTab('about')" class="hover:text-white transition-colors">Clinical Practitioner</button></li>
+                    <li><button onclick="navigateToTab('contact')" class="hover:text-white transition-colors">Hours & Location Map</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Statutory Declarations</h4>
+                <p class="leading-relaxed">Dr Dimba</p>
+                <p class="leading-relaxed">Pr No: 1332546</p>
+                <p class="mt-2 text-medicalGold">HPCSA General Outpatient Care Framework</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3">Medical Aid Access</h4>
+                <p class="leading-relaxed">We settle direct automated claims across the vast majority of medical aid structures in South African territory.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-slate-800/80 text-center text-slate-500">
             © 2026 Olwemihla Health Services. All Rights Reserved. Built securely for okwemihla.co.za.
         </div>
     </footer>
 
     <script>
+        // PRELOADER DISMISSAL ENGINE TRIGGER
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
@@ -481,7 +686,7 @@
             }, 2200);
         });
 
-        // GLOBAL NAVIGATION ROUTER
+        // GLOBAL TABS INTERACTIVE SYSTEM ROUTER
         function navigateToTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active-tab'));
@@ -493,31 +698,27 @@
             
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
-                link.classList.remove('text-medicalNavy', 'font-semibold', 'bg-slate-100/80');
-                link.classList.add('hover:text-medicalNavy', 'hover:bg-slate-100/50');
+                link.classList.remove('text-medicalNavy', 'font-semibold', 'bg-slate-100');
+                link.classList.add('hover:text-medicalNavy', 'hover:bg-slate-50');
             });
             
             const selectedNavLink = document.getElementById('nav-' + tabId);
             if(selectedNavLink) {
-                selectedNavLink.classList.add('text-medicalNavy', 'font-semibold', 'bg-slate-100/80');
+                selectedNavLink.classList.add('text-medicalNavy', 'font-semibold', 'bg-slate-100');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // SUB-SERVICES DRILLDOWN ROUTER ENGINE
+        // SUB-SERVICES VIEW DRILL DOWN SYSTEM
         function navigateToSubService(subviewId) {
-            // Force user to view the services primary display container block
             navigateToTab('services');
             
-            // Hide primary main grid view
             document.getElementById('services-main-list').classList.remove('block');
             document.getElementById('services-main-list').classList.add('hidden');
             
-            // Suppress all ongoing details tabs
             const subviews = document.querySelectorAll('.service-subview');
             subviews.forEach(view => view.classList.remove('active-subview'));
             
-            // Surface targeted deep-dive container card block layout
             const activeSubview = document.getElementById('subview-' + subviewId);
             if(activeSubview) {
                 activeSubview.classList.add('active-subview');
@@ -525,7 +726,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Revert immediately back to the master services comparison overview grid list
         function resetServiceViews() {
             document.getElementById('services-main-list').classList.remove('hidden');
             document.getElementById('services-main-list').classList.add('block');
@@ -534,7 +734,7 @@
             subviews.forEach(view => view.classList.remove('active-subview'));
         }
 
-        // Modal triggers
+        // Booking Modal Systems
         function openBookingModal() {
             const modal = document.getElementById('bookingModal');
             const container = document.getElementById('modalContainer');
@@ -544,6 +744,10 @@
                 container.classList.add('scale-100', 'opacity-100');
             }, 50);
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBookingModal();
+        });
 
         function closeBookingModal() {
             const modal = document.getElementById('bookingModal');
@@ -555,8 +759,14 @@
 
         function handleBookingRequestSubmit(e) {
             e.preventDefault();
-            alert("Success! Your medical appointment slot request has been logged.");
+            alert("Success! Your medical appointment slot request has been logged. Our receptionist will contact you via telephone to confirm your time block.");
             closeBookingModal();
+            e.target.reset();
+        }
+
+        function handleContactFormSubmit(e) {
+            e.preventDefault();
+            alert("Thank you. Your inquiry has been sent to our desk manager. We will respond soon.");
             e.target.reset();
         }
     </script>
