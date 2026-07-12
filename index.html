@@ -309,10 +309,10 @@
                         <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Wellness Screenings</h3>
                         <p class="text-slate-500 text-sm mt-2">Proactive diagnostics aimed at isolating health risk factors before symptoms develop.</p>
                     </div>
-                    <div onclick="navigateToSubService('patient-education')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">PE</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Patient Education</h3>
-                        <p class="text-slate-500 text-sm mt-2">Dedicated counseling frameworks designed to empower families with practical lifestyle habits knowledge.</p>
+                    <div onclick="navigateToSubService('pap-smears')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">PS</div>
+                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Pap Smears</h3>
+                        <p class="text-slate-500 text-sm mt-2">Routine cervical screening services for early detection and reproductive health maintenance.</p>
                     </div>
                 </div>
             </section>
@@ -390,14 +390,14 @@
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('patient-education')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('pap-smears')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="patient education.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">Patient Education</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10">Pap Smears</h3>
                             </div>
                             <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Dedicated counseling frameworks designed to empower families with practical health knowledge, enabling confident care...</p>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
                             </div>
                         </div>
@@ -455,11 +455,11 @@
                 </div>
             </div>
 
-            <div id="subview-patient-education" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+            <div id="subview-pap-smears" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
-                    <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="patient education.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Patient Counseling Frameworks</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>Empowering local families with practical health knowledge, lifestyle habits modifications blueprints, and direct condition maintenance guides.</p></div>
+                    <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="patient education.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Pap Smears</h2></div></div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain their reproductive health with confidence and peace of mind.</p></div>
                 </div>
             </div>
         </div>
@@ -623,20 +623,22 @@
 
     </main>
 
-    <div id="bookingModal" class="fixed inset-0 z-50 overflow-y-auto hidden bg-darkNavy/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalContainer">
-            <div class="bg-darkNavy text-white p-6 border-b border-medicalGold flex justify-between items-center">
-                <h3 class="text-lg font-bold text-white">Request Appointment Slot</h3>
-                <button onclick="closeBookingModal()" class="text-slate-400 hover:text-white text-xl font-bold">×</button>
+    <div id="bookingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+        <h3 class="text-lg font-bold text-darkNavy mb-4">Request Appointment</h3>
+        <div class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase">Preferred Date</label>
+                <input type="date" id="appointment-date" class="w-full border border-slate-300 rounded-xl px-4 py-2 mt-1">
             </div>
-            <form id="modalbookingform" action="https://getform.io/f/alured7to6g" method="POST" target="hidden_iframe" onsubmit="triggerFormSuccessNotification('modalbookingform')" class="p-6 space-y-4">
-                <input type="text" name="Full Name" required placeholder="Patient Full Name" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
-                <input type="tel" name="Callback Contact" required placeholder="Contact Phone Number" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
-                <input type="date" name="Target Appointment Date" required class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-medicalNavy bg-white">
-                <button type="submit" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl text-sm transition shadow-lg">Confirm Slot Request</button>
-            </form>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase">Preferred Time</label>
+                <input type="time" id="appointment-time" class="w-full border border-slate-300 rounded-xl px-4 py-2 mt-1">
+            </div>
+            <button onclick="closeBookingModal()" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl hover:bg-medicalGold transition">Confirm Request</button>
         </div>
     </div>
+</div>
 
     <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         <a href="tel:0705071168" aria-label="Call Medical Desk Now" class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 active:scale-90 transform transition-all duration-200 animate-bounce shadow-blue-600/40">
@@ -674,6 +676,18 @@
         </form>
     </div>
 
+    <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-darkNavy mb-12">How to Find Us</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="space-y-3"><img src="1.jpeg" class="rounded-lg shadow-md w-full"><p class="text-xs font-bold uppercase tracking-widest">1. Front Sign Board</p></div>
+            <div class="space-y-3"><img src="2.jpeg" class="rounded-lg shadow-md w-full"><p class="text-xs font-bold uppercase tracking-widest">2. Road to Parking</p></div>
+            <div class="space-y-3"><img src="3.jpeg" class="rounded-lg shadow-md w-full"><p class="text-xs font-bold uppercase tracking-widest">3. Follow the Alley</p></div>
+            <div class="space-y-3"><img src="4.jpeg" class="rounded-lg shadow-md w-full"><p class="text-xs font-bold uppercase tracking-widest">4. Entrance Door</p></div>
+        </div>
+    </div>
+</section>
+
     <footer class="bg-darkNavy text-slate-400 text-xs py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div class="space-y-3">
@@ -705,6 +719,14 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('appointment-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
+
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
