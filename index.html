@@ -165,7 +165,8 @@
                             </button>
                             <button onclick="navigateToSubService('chronic-management'); toggleSidebar(false);" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Chronic Disease Management</button>
                             <button onclick="navigateToSubService('wellness-screenings'); toggleSidebar(false);" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Wellness Screenings</button>
-                            <button onclick="navigateToSubService('patient-education'); toggleSidebar(false);" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Patient Education</button>
+                            <button onclick="navigateToSubService('pap-smears'); toggleSidebar(false);" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Pap Smears</button>
+                            <button onclick="navigateToSubService('medical-circumcision'); toggleSidebar(false);" class="w-full text-left text-xs text-slate-400 hover:text-white py-1 block transition-colors">• Medical Circumcision</button>
                         </div>
                     </div>
 
@@ -314,6 +315,13 @@
                         <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Pap Smears</h3>
                         <p class="text-slate-500 text-sm mt-2">Routine cervical screening services for early detection and reproductive health maintenance.</p>
                     </div>
+                    <div onclick="navigateToSubService('medical-circumcision')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+    <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MC</div>
+    <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Medical Circumcision</h3>
+    <p class="text-slate-500 text-sm mt-2">
+        Safe, professional medical circumcision performed in a sterile clinical environment with comprehensive aftercare and follow-up support.
+    </p>
+</div>
                 </div>
             </section>
         </div>
@@ -337,7 +345,7 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Comprehensive evaluation of underlying clinical profiles. This involves direct acute symptom tracking, prescriptive intervention regimens...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
@@ -349,7 +357,7 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Official medical documentation following rigorous clinical examinations. Fully aligned with South African statutory guidelines...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
@@ -362,7 +370,7 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Outpatient surgical actions completed inside our customized emergency intervention suite including <strong>medical circumcisions</strong>...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
@@ -374,7 +382,7 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Continuous therapeutic management protocols designed for long-term health anomalies. We focus on lifestyle engineering...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
@@ -386,7 +394,7 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Proactive diagnostic biological system stress reviews aimed at isolating dynamic health metrics before symptoms occur...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
@@ -398,9 +406,30 @@
                             </div>
                             <div class="p-6">
                                 <p class="text-slate-600 text-sm leading-relaxed mb-4">Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain...</p>
-                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Expand Operational Details <span>→</span></span>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
+                        <div onclick="navigateToSubService('medical-circumcision')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+    <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
+        <img src="minor procedures.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
+
+        <h3 class="text-xl font-bold text-white relative z-10">
+            Medical Circumcision
+        </h3>
+    </div>
+
+    <div class="p-6">
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Professional medical circumcision performed with patient comfort, safety, and privacy at the centre of every procedure...
+        </p>
+
+        <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">
+            Learn More
+            <span>→</span>
+        </span>
+    </div>
+</div>
                     </div>
                 </section>
             </div>
@@ -409,13 +438,25 @@
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="general consultations.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">General Consultations Spectrum</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed">
-                        <p>At Olwemihla Health Services, our general consultations are designed to provide comprehensive, patient-centred medical care for individuals and families of all ages. Whether you are experiencing new symptoms, recovering from an illness, managing an ongoing health condition, or simply need a routine health assessment, Dr N. Dimba is committed to providing thorough, compassionate, and personalised care.</p>
-                        <p>During your consultation, we take the time to understand your concerns, review your medical history, perform a detailed clinical examination where necessary, and discuss any symptoms you may be experiencing. Based on our findings, we will provide a diagnosis, recommend the most appropriate treatment, prescribe medication if required, and advise on any further investigations or referrals.</p>
-                        <p>We believe that quality healthcare begins with listening. Every consultation is approached with professionalism, respect, and a genuine commitment to helping you achieve the best possible health outcomes. Our aim is not only to treat illness but also to support your long-term health through preventative care, patient education, and ongoing medical guidance.</p>
-                        <p><strong>Need to book an appointment?</strong></p>
-                        <p>If you have questions about this service or would like to schedule a consultation, please contact Olwemihla Health Services. Our team is here to provide compassionate, professional care and guide you every step of the way.</p>
-                    </div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        At Olwemihla Health Services, our general consultations are designed to provide comprehensive, patient-centred medical care for individuals and families of all ages. Whether you are experiencing new symptoms, recovering from an illness, managing an ongoing health condition, or simply need a routine health assessment, Dr N. Dimba is committed to providing thorough, compassionate, and personalised care.
+    </p>
+
+    <p>
+        During your consultation, we take the time to understand your concerns, review your medical history, perform a detailed clinical examination where necessary, and discuss any symptoms you may be experiencing. Based on our findings, we will provide a diagnosis, recommend the most appropriate treatment, prescribe medication if required, and advise on any further investigations or referrals.
+    </p>
+
+    <p>
+        We believe that quality healthcare begins with listening. Every consultation is approached with professionalism, respect, and a genuine commitment to helping you achieve the best possible health outcomes. Our aim is not only to treat illness but also to support your long-term health through preventative care, patient education, and ongoing medical guidance.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        If you have questions about this service or would like to schedule a consultation, please contact Olwemihla Health Services. Our team is here to provide compassionate, professional care and guide you every step of the way.
+    </p>
+</div>
                 </div>
             </div>
 
@@ -423,7 +464,25 @@
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="medical certificates.png" class="absolute inset-0 w-full h-full object-cover opacity-25 grayscale mix-blend-overlay"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Statutory Medical Certifications</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>All medical verifications, sick leaves, and legal readiness logs are structured under total alignment with South African labour parameter indices ($Pr\ No:\ 1332546$).</p></div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        We provide professional medical assessments and issue medical certificates and reports when clinically appropriate and in accordance with South African healthcare and labour regulations.
+    </p>
+
+    <p>
+        Our services include sick notes for work or school, fitness-for-duty assessments, return-to-work certificates, medical reports, and other healthcare documentation required by employers, educational institutions, insurance providers, or relevant authorities.
+    </p>
+
+    <p>
+        Every assessment is conducted ethically and with careful consideration of your medical condition. We understand that official medical documentation plays an important role in protecting both patients and employers, which is why every certificate is based on a thorough clinical evaluation and completed with accuracy, integrity, and professionalism.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        If you require a medical assessment or official medical documentation, please contact Olwemihla Health Services to schedule an appointment. We are committed to providing reliable, professional, and patient-focused healthcare services.
+    </p>
+</div>
                 </div>
             </div>
 
@@ -439,7 +498,29 @@
                         </div>
                     </div>
                     <div class="p-8 space-y-6">
-                        <p class="text-sm text-slate-600 leading-relaxed">Our surgical suite provides safe outpatient clinical operations under strict sterile guidelines. Dr Dimba specializes in professional <strong>medical circumcisions</strong>, local anesthetic application blocks, tissue stitch care repairs, and abscess drain treatments.</p>
+                        <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        Olwemihla Health Services offers a range of safe minor outpatient procedures that can be performed without the need for hospital admission. All procedures take place in a clean, sterile, and comfortable clinical environment using recognised infection prevention and safety protocols.
+    </p>
+
+    <p>
+        Our services include professional medical circumcisions, wound cleaning and dressing, suturing (stitches), suture removal, abscess drainage, treatment of minor skin conditions, and other minor procedures as determined during your consultation.
+    </p>
+
+    <p>
+        Medical circumcision is performed with patient comfort, safety, and privacy as our highest priorities. Before the procedure, patients receive a full explanation of what to expect, including preparation, the procedure itself, and recovery. Following treatment, we provide comprehensive aftercare instructions, wound care guidance, pain management advice, and follow-up appointments where necessary to support proper healing and minimise the risk of complications.
+    </p>
+
+    <p>
+        Every procedure is carried out with precision, professionalism, and compassion, ensuring that patients feel informed, comfortable, and well cared for throughout their treatment and recovery journey.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        If you would like to learn more about our minor outpatient procedures or schedule a consultation, please contact Olwemihla Health Services. We are here to provide safe, professional care tailored to your healthcare needs.
+    </p>
+</div>
                         <div class="text-center pt-2"><button onclick="openBookingModal()" class="bg-medicalNavy text-white font-medium px-6 py-2.5 rounded-xl text-xs hover:bg-darkNavy transition shadow-md">Book Consultation Slot</button></div>
                     </div>
                 </div>
@@ -449,15 +530,58 @@
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="chronic disease management.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Chronic Condition Optimization</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>Continuous stabilization monitoring pipelines designed for hypertension, sugar metabolic anomalies (diabetes), and long-term diagnostic therapy balances.</p></div>
-                </div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        Managing a chronic medical condition requires more than medication—it requires ongoing support, regular monitoring, and a partnership between patient and healthcare provider. At Olwemihla Health Services, we provide comprehensive care for patients living with long-term health conditions, helping them maintain their health and improve their quality of life.
+    </p>
+
+    <p>
+        We manage conditions such as hypertension (high blood pressure), diabetes, asthma, and other chronic illnesses through regular follow-up consultations, medication reviews, routine health monitoring, and personalised treatment plans tailored to each patient's individual needs.
+    </p>
+
+    <p>
+        We also place a strong emphasis on lifestyle management. Patients receive guidance on healthy eating, physical activity, weight management, medication adherence, and reducing risk factors that may contribute to complications. Our goal is to help patients gain confidence in managing their health while preventing disease progression and promoting long-term wellbeing.
+    </p>
+
+    <p>
+        Through consistent monitoring, education, and compassionate support, we work alongside our patients to achieve better health outcomes and encourage healthier, more independent living.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        Whether you have recently been diagnosed with a chronic condition or require ongoing medical care, Olwemihla Health Services is here to support you with personalised treatment and long-term healthcare management. Contact us today to schedule your appointment.
+    </p>
+</div>
             </div>
 
             <div id="subview-wellness-screenings" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="wellness screenings.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Proactive Health Screenings</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>Vital metabolic marker index tests, sugar reviews, cholesterol checks, and cardiovascular risk indicators completed right inside the clinic suite.</p></div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        Preventative healthcare is one of the most effective ways to protect your long-term health. Regular health screenings help identify potential health concerns before symptoms develop, allowing for early diagnosis, timely treatment, and better health outcomes.
+    </p>
+
+    <p>
+        We offer a variety of preventative health assessments, including blood pressure monitoring, blood glucose testing, cholesterol screening, weight and body mass index (BMI) assessments, cardiovascular risk evaluations, and other routine health checks based on your age, lifestyle, medical history, and individual risk factors.
+    </p>
+
+    <p>
+        A screening appointment is also an opportunity to learn more about your health. We provide personalised patient education on nutrition, healthy lifestyle choices, physical activity, disease prevention, medication use, and strategies for reducing the risk of chronic illnesses. We believe that informed patients are empowered patients, and we are committed to equipping you with the knowledge and support needed to make confident decisions about your health.
+    </p>
+
+    <p>
+        Whether you are attending for your annual check-up, monitoring your overall health, or taking the first step towards a healthier lifestyle, our preventative screening services are designed to help you stay well, identify potential health risks early, and support you in achieving lifelong wellness.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        Take a proactive approach to your health by scheduling a preventative health screening at Olwemihla Health Services. Our team is here to provide professional assessments, practical guidance, and ongoing support to help you live a healthier life.
+    </p>
+</div>
                 </div>
             </div>
 
@@ -465,9 +589,85 @@
                 <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">← Back to Main Portfolio</button>
                 <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                     <div class="h-64 bg-darkNavy relative p-8 flex items-end"><img src="patient education.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm"><div class="relative z-10"><h2 class="text-3xl font-bold text-white">Pap Smears</h2></div></div>
-                    <div class="p-8 text-sm text-slate-600 leading-relaxed"><p>Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain their reproductive health with confidence and peace of mind.</p></div>
+                    <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+    <p>
+        A Pap smear is a simple, safe, and highly effective screening test that plays an important role in protecting women's reproductive health. The test is used to detect abnormal changes in the cells of the cervix, often before symptoms develop, allowing for early intervention and significantly reducing the risk of cervical cancer.
+    </p>
+
+    <p>
+        At Olwemihla Health Services, Pap smears are performed in a professional, respectful, and supportive environment where your comfort, privacy, and dignity are always our priority. Before the procedure, we explain what to expect, answer any questions you may have, and ensure you feel informed and at ease throughout your appointment.
+    </p>
+
+    <p>
+        Following your screening, we discuss when and how you will receive your results, explain any recommended follow-up care if required, and provide guidance on routine cervical screening, reproductive health, and the importance of regular preventative healthcare. We are committed to supporting women at every stage of their healthcare journey through compassionate, evidence-based medical care.
+    </p>
+
+    <p>
+        Regular cervical screening is one of the most effective ways to detect changes early and protect your long-term health. Our goal is to empower every woman to make informed decisions about her wellbeing by providing trusted advice, quality healthcare, and ongoing support in a safe and welcoming clinical environment.
+    </p>
+
+    <p><strong>Need to book an appointment?</strong></p>
+
+    <p>
+        If you are due for a Pap smear or would like to learn more about cervical screening, contact Olwemihla Health Services to schedule an appointment. We are here to provide professional, compassionate care and support your reproductive health with confidence and respect.
+    </p>
+</div>
                 </div>
             </div>
+
+        <div id="subview-medical-circumcision" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
+
+    <button onclick="resetServiceViews()" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-medicalNavy hover:text-medicalGold transition-colors">
+        ← Back to Main Portfolio
+    </button>
+
+    <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
+
+        <div class="h-64 bg-darkNavy relative p-8 flex items-end">
+            <img src="medical circumcision.png" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm">
+
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold text-white">
+                    Medical Circumcision
+                </h2>
+            </div>
+        </div>
+
+        <div class="p-8 text-sm text-slate-600 leading-relaxed space-y-5">
+
+            <p>
+                At Olwemihla Health Services, we provide professional medical circumcision in a safe, clean, and comfortable clinical environment. The procedure is performed by Dr N. Dimba using recognised medical techniques and strict infection prevention protocols to ensure the highest standards of patient care. Our priority is to provide a professional experience where every patient feels informed, respected, and well cared for throughout their treatment.
+            </p>
+
+            <p>
+                Medical circumcision is a minor surgical procedure involving the removal of the foreskin from the penis. It may be performed for medical, personal, cultural, or religious reasons and has been shown to provide several health benefits, including improved genital hygiene, a reduced risk of certain infections, and a lower risk of urinary tract infections and some sexually transmitted infections when combined with other preventative measures.
+            </p>
+
+            <p>
+                Before the procedure, every patient receives a thorough consultation to discuss their medical history, answer any questions, and ensure they understand what to expect. A local anaesthetic is administered to maximise comfort during the procedure, and every step is explained carefully to help patients feel relaxed and reassured.
+            </p>
+
+            <p>
+                Following the procedure, patients receive detailed aftercare instructions, including guidance on wound care, hygiene, pain management, healing expectations, and recognising signs that may require medical attention. Follow-up appointments are available to monitor healing and ensure a smooth recovery.
+            </p>
+
+            <p>
+                We welcome patients aged <strong>10 years and older</strong>. Every circumcision is performed with professionalism, privacy, compassion, and a commitment to delivering safe, high-quality healthcare in a supportive environment.
+            </p>
+
+            <p>
+                <strong>Need to book an appointment?</strong>
+            </p>
+
+            <p>
+                If you would like more information about medical circumcision or wish to schedule a consultation, please contact Olwemihla Health Services. Our team is here to answer your questions, explain the procedure, and provide compassionate care every step of the way.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
         </div>
 
         <div id="tab-rates" class="tab-content">
