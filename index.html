@@ -1135,7 +1135,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dateInput = document.ElementById('appointment-date');
+            const dateInput = document.getElementById('appointment-date');
             if (dateInput) {
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.setAttribute('min', today);
@@ -1143,13 +1143,13 @@
         });
 
         window.addEventListener('load', () => {
-            const preloader = document.ElementById('preloader');
+            const preloader = document.getElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
         });
 
         // Toggle Sidebar Function
         function toggleSidebar(shouldOpen) {
-            const menu = document.ElementById('sidebarMenu');
+            const menu = document.getElementById('sidebarMenu');
             if (shouldOpen) {
                 menu.classList.add('open-drawer');
                 menu.style.transform = "translateX(0)";
@@ -1159,7 +1159,7 @@
             }
         }
         const hotspot = document.querySelector(".left-hotspot");
-const sidebar = document.ElementById("sidebarMenu");
+const sidebar = document.getElementById("sidebarMenu");
 
 if (hotspot && sidebar) {
     hotspot.addEventListener("mouseenter", () => {
@@ -1175,7 +1175,7 @@ if (hotspot && sidebar) {
         function navigateToTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active-tab'));
-            const activeTar = document.ElementById('tab-' + tabId);
+            const activeTar = document.getElementById('tab-' + tabId);
             if(activeTar) activeTar.classList.add('active-tab');
             
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1183,7 +1183,7 @@ if (hotspot && sidebar) {
                 link.classList.remove('text-medicalNavy', 'font-semibold', 'bg-slate-100');
                 link.classList.add('hover:text-medicalNavy', 'hover:bg-slate-50');
             });
-            const selectedNavLink = document.ElementById('nav-' + tabId);
+            const selectedNavLink = document.getElementById('nav-' + tabId);
             if(selectedNavLink) selectedNavLink.classList.add('text-medicalNavy', 'font-semibold', 'bg-slate-100');
             
             if (tabId === 'rates') {
@@ -1194,7 +1194,7 @@ if (hotspot && sidebar) {
 
         // Cash Rate Odometer script engine
         function animateCashOdometer(startValue, endValue, duration) {
-            const tarNode = document.ElementById('cashRateOdometer');
+            const tarNode = document.getElementById('cashRateOdometer');
             if (!tarNode) return;
             
             let startTime = null;
