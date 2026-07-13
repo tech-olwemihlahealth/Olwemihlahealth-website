@@ -106,9 +106,14 @@
             transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .left-hotspot:hover #sidebarMenu, #sidebarMenu:hover, #sidebarMenu.open-drawer {
-            transform: translateX(0);
-        }
+        #sidebarMenu {
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#sidebarMenu.open-drawer {
+    transform: translateX(0);
+}
 
         .chat-container {
             max-height: 380px;
@@ -147,10 +152,9 @@
                 </div>
 
                 <nav class="space-y-4">
-                    <button onclick="navigateToTab('home')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between group">
-                        <span>Home</span>
-                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
-                    </button>
+                    <button onclick="navigateToTab('home'); toggleSidebar(false);" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 text-medicalGold flex items-center justify-between group">
+    <span>Home</span>
+</button>
                     
                     <div class="space-y-1">
                         <button onclick="navigateToTab('services'); resetServiceViews(); toggleSidebar(false);" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between text-medicalGold">
@@ -170,19 +174,16 @@
                         </div>
                     </div>
 
-                    <button onclick="navigateToTab('rates')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 text-medicalGold flex items-center justify-between group">
-                        <span>Rates & Medical Aids</span>
-                    </button>
-
-                    <button onclick="navigateToTab('about')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between group">
-                        <span>About the Doctor</span>
-                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
-                    </button>
+                    <button onclick="navigateToTab('rates'); toggleSidebar(false);" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 text-medicalGold flex items-center justify-between group">
+    <span>Rates & Medical Aids</span>
+</button>
+                    <button onclick="navigateToTab('about'); toggleSidebar(false);" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 text-medicalGold flex items-center justify-between group">
+    <span>About the Doctor</span>
+</button>
                     
-                    <button onclick="navigateToTab('contact')" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 hover:text-medicalGold flex items-center justify-between group">
-                        <span>Contact & Hours</span>
-                        <span class="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
-                    </button>
+                    <button onclick="navigateToTab('contact'); toggleSidebar(false);" class="w-full text-left py-2.5 px-4 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-slate-800/60 text-medicalGold flex items-center justify-between group">
+    <span>Contact & Hours</span>
+</button>
                 </nav>
             </div>
 
@@ -232,11 +233,21 @@
             </div>
 
             <div class="hidden md:flex items-center space-x-1 font-medium text-sm text-slate-600">
-                <button onclick="navigateToTab('home')" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">Home</button>
-                <button onclick="navigateToTab('services'); resetServiceViews();" id="nav-services" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">Our Services</button>
-                <button onclick="navigateToTab('rates')" id="nav-rates" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">Rates & Medical Aids</button>
-                <button onclick="navigateToTab('about')" id="nav-about" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">About the Doctor</button>
-                <button onclick="navigateToTab('contact')" id="nav-contact" class="nav-link px-4 py-2 rounded-lg hover:text-medicalNavy hover:bg-slate-50 transition duration-200">Contact & Hours</button>
+                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
+    Home
+</button>
+                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-services" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
+    Our Services
+</button>
+                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-home" class="nav-rates px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
+    Rates & Medical Aids
+</button>
+                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-about" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
+    About the Doctor
+</button>
+                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-contact" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
+    Contact & Hours
+</button>
             </div>
 
             <div class="flex items-center gap-3">
@@ -941,7 +952,7 @@
 
         // Toggle Sidebar Function
         function toggleSidebar(shouldOpen) {
-            const menu = document.getElementById('sidebarMenu');
+            const menu = document.getElementById('');
             if (shouldOpen) {
                 menu.classList.add('open-drawer');
                 menu.style.transform = "translateX(0)";
@@ -950,6 +961,16 @@
                 menu.style.transform = "translateX(-100%)";
             }
         }
+        const hotspot = document.querySelector(".left-hotspot");
+const sidebar = document.getElementById("sidebarMenu");
+
+hotspot.addEventListener("mouseenter", () => {
+    toggleSidebar(true);
+});
+
+sidebar.addEventListener("mouseleave", () => {
+    toggleSidebar(false);
+});
 
         // Global Navigation Router
         function navigateToTab(tabId) {
