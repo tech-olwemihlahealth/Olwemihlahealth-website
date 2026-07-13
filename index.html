@@ -1409,6 +1409,66 @@ document.getElementById("officeInquiryForm").addEventListener("submit", function
     });
 
 });
+
+    document.getElementById("appointmentForm").addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const button = document.getElementById("appointmentSubmitBtn");
+
+    button.disabled = true;
+
+    button.innerHTML = "Sending...";
+
+    emailjs.send(
+        "service_farcqmm",
+        "template_9n6gyfi",
+        {
+
+            patient_name: document.getElementById("appointmentName").value,
+
+            phone_number: document.getElementById("appointmentPhone").value,
+
+            email_address: document.getElementById("appointmentEmail").value,
+
+            service_required: document.getElementById("appointmentService").value,
+
+            preferred_date: document.getElementById("appointmentDate").value,
+
+            preferred_time: document.getElementById("appointmentTime").value,
+
+            medical_aid: document.getElementById("appointmentMedicalAid").value,
+
+            additional_notes: document.getElementById("appointmentNotes").value
+
+        }
+
+    )
+
+    .then(() => {
+
+        button.disabled = false;
+        button.innerHTML = "Request Appointment";
+
+        triggerFormSuccessNotification("appointmentForm");
+
+    })
+
+    .catch((error) => {
+
+        console.error(error);
+
+        button.disabled = false;
+        button.innerHTML = "Request Appointment";
+
+        showSuccessModal(
+            "Something went wrong",
+            "We couldn't send your appointment request. Please try again or contact the practice directly."
+        );
+
+    });
+
+});
 </script>
     <!-- Success Notification -->
 <div id="successModal" class="fixed inset-0 bg-darkNavy/70 backdrop-blur-sm hidden items-center justify-center z-[200]">
