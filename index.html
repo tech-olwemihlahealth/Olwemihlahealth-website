@@ -123,7 +123,6 @@
 </head>
 <body class="bg-clinicalSlate text-slate-800 antialiased flex flex-col min-h-screen relative">
 
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <div id="preloader">
         <div class="relative flex flex-col items-center">
@@ -627,6 +626,7 @@
                     <div class="text-center pt-2"><button onclick="openBookingModal()" class="bg-medicalNavy text-white font-medium px-6 py-2.5 rounded-xl text-xs hover:bg-darkNavy transition shadow-md">Book Consultation Slot</button></div>
                 </div>
             </div>
+            </div>
 
         <div id="subview-medical-circumcision" class="service-subview py-12 max-w-5xl mx-auto px-4 md:px-24">
 
@@ -678,7 +678,7 @@
 
         </div>
         <div class="text-center pt-2"><button onclick="openBookingModal()" class="bg-medicalNavy text-white font-medium px-6 py-2.5 rounded-xl text-xs hover:bg-darkNavy transition shadow-md">Book Consultation Slot</button></div>
-
+    </div>
     </div>
 
 </div>
@@ -791,7 +791,7 @@
                 
                 <div class="lg:col-span-5 space-y-8">
                     <div>
-                        <h1 class="text-3xl font-bold text-darkNavy">Get in Touch</h1>
+                        <h1 class="text-3xl font-bold text-darkNavy"> in Touch</h1>
                         <p class="text-slate-500 mt-1 text-sm">Contact information for Olwemihla Health Services.</p>
                     </div>
 
@@ -818,7 +818,7 @@
 
                 <div class="lg:col-span-7">
                     <div class="bg-white border border-slate-200 p-2 shadow-xl rounded-2xl group relative overflow-hidden h-[340px]">
-                        <a href="https://maps.google.com/?q=1+Chestnut+Crescent,+Marianhill" target="_blank" class="absolute inset-0 z-20 bg-transparent flex flex-col items-center justify-center group-hover:bg-darkNavy/10 transition-colors">
+                        <a href="https://maps.google.com/?q=1+Chestnut+Crescent,+Marianhill" tar="_blank" class="absolute inset-0 z-20 bg-transparent flex flex-col items-center justify-center group-hover:bg-darkNavy/10 transition-colors">
                             <span class="bg-darkNavy text-white px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 shadow-xl transition-opacity duration-300 pointer-events-none"> Open Live Google Maps Navigation 🗺️</span>
                         </a>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3459.4316982921504!2d30.8285521!3d-29.8517265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef6fa231267b14d%3A0xad5d3ba2b1e2bdad!2sMarianhill!5e0!3m2!1sen!2sza!4v1717960000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-full rounded-xl z-10 relative"></iframe>
@@ -830,7 +830,7 @@
 
         <div class="text-center max-w-3xl mx-auto mb-14">
             <span class="text-medicalGold font-semibold uppercase tracking-[0.2em] text-xs">
-                Getting Here
+                ting Here
             </span>
 
             <h2 class="text-4xl font-bold text-darkNavy mt-3">
@@ -934,14 +934,79 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:px-24">
             <div class="bg-white border border-slate-200 p-6 shadow-xl rounded-2xl">
-                <h3 class="text-lg font-bold text-darkNavy mb-2">Send a Direct Office Inquiry</h3>
-                <form id="officeinquiryform" action="https://getform.io/f/alured7to6g" method="POST" target="hidden_iframe" onsubmit="triggerFormSuccessNotification('officeinquiryform')" class="space-y-4">
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <input type="text" name="Patient Name" required placeholder="Your Name" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white">
-                        <input type="tel" name="Phone Number" required placeholder="Contact Number" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                <h3 class="text-xl font-bold text-darkNavy">
+    Get in Touch
+</h3>
+
+<p class="text-sm text-slate-500 mt-2 mb-6">
+    Have a question about our services, operating hours, medical aids or anything else? Complete the form below and a member of our team will get back to you as soon as possible.
+</p>
+                <form
+    id="officeInquiryForm"
+    class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                    <label for="officeName" class="block text-sm font-semibold text-darkNavy mb-2">
+    Full Name
+</label>
+
+<input
+    type="text"
+    id="officeName"
+    name="patient_name"
+    required
+    placeholder="Enter your full name"
+    class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                    <label for="officePhone" class="block text-sm font-semibold text-darkNavy mb-2">
+    Contact Number
+</label>
+
+<input
+    type="tel"
+    id="officePhone"
+    name="phone_number"
+    required
+    placeholder="e.g. 082 123 4567"
+    class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                    <label for="officeEmail" class="block text-sm font-semibold text-darkNavy mb-2">
+    Email Address
+</label>
+
+<input
+    type="email"
+    id="officeEmail"
+    name="email_address"
+    required
+    placeholder="Enter your email address"
+    class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                    <label for="officeSubject" class="block text-sm font-semibold text-darkNavy mb-2">
+    Subject
+</label>
+
+<input
+    type="text"
+    id="officeSubject"
+    name="subject"
+    required
+    placeholder="What can we help you with?"
+    class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white">
+                    <label for="officeMessage" class="block text-sm font-semibold text-darkNavy mb-2">
+    Message
+</label>
+
+<textarea
+    id="officeMessage"
+    name="message"
+    rows="5"
+    required
+    placeholder="Please tell us how we can assist you."
+    class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"></textarea>
+                    <button
+    id="officeSubmitBtn"
+    type="submit"
+    class="w-full bg-medicalNavy hover:bg-medicalGold hover:text-darkNavy text-white font-semibold py-3 rounded-xl transition-all duration-300">
+    Send Enquiry
+</button>
                     </div>
-                    <textarea name="Patient Message" rows="4" required placeholder="Write your questions here..." class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-medicalNavy bg-white"></textarea>
-                    <button type="submit" class="w-full bg-medicalNavy text-white font-semibold py-3 rounded-xl text-sm shadow-md transition-all">Send Office Dispatch</button>
                 </form>
             </div>
         </div>
@@ -951,16 +1016,53 @@
     <div id="bookingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm">
     <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl">
         <h3 class="text-lg font-bold text-darkNavy mb-4">Request Appointment</h3>
-        <div class="space-y-4">
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase">Preferred Date</label>
-                <input type="date" id="appointment-date" class="w-full border border-slate-300 rounded-xl px-4 py-2 mt-1">
+        <p class="text-sm text-slate-500 mb-6">
+    Complete the form below and we'll contact you shortly to confirm your appointment.
+</p>
+        <form id="appointmentForm" class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+            <label for="appointmentName" class="block text-sm font-semibold text-darkNavy mb-2"> Full Name </label> 
+            <input type="text" id="appointmentName" name="patient_name" required placeholder="Enter your full name" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+            
+            <label for="appointmentPhone" class="block text-sm font-semibold text-darkNavy mb-2"> Contact Number </label> 
+            <input type="tel" id="appointmentPhone" name="phone_number" required placeholder="e.g. 082 123 4567" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+            
+            <label for="appointmentEmail" class="block text-sm font-semibold text-darkNavy mb-2"> Email Address </label> 
+            <input type="email" id="appointmentEmail" name="email_address" required placeholder="Enter your email address" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+            
+            <label for="appointmentService" class="block text-sm font-semibold text-darkNavy mb-2"> Service Required </label> 
+            <select id="appointmentService" name="service_required" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+                <option value="">Select a service</option> 
+                <option>General Consultation</option> 
+                <option>Medical Certificate</option> 
+                <option>Chronic Disease Management</option> 
+                <option>Preventative Health Screening</option> 
+                <option>Pap Smear</option> 
+                <option>Minor Outpatient Procedure</option> 
+                <option>Medical Circumcision</option> 
+                <option>Unsure / I'd like advice</option> 
+            </select> 
+            
+            <label for="appointmentDate" class="block text-sm font-semibold text-darkNavy mb-2"> Preferred Appointment Date </label> 
+            <input type="date" min="" id="appointmentDate" name="preferred_date" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+            
+            <label for="appointmentTime" class="block text-sm font-semibold text-darkNavy mb-2"> Preferred Time </label> 
+            <select id="appointmentTime" name="preferred_time" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+                <option value="">Select a preferred time</option> 
+                <option>Morning (08:00 – 12:00)</option> 
+                <option>Afternoon (12:00 – 16:00)</option> 
+                <option>No Preference</option> 
+            </select> 
+            
+            <label for="appointmentMedicalAid" class="block text-sm font-semibold text-darkNavy mb-2"> Medical Aid (Optional) </label> 
+            <input type="text" id="appointmentMedicalAid" name="medical_aid" placeholder="e.g. Discovery Health" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
+            
+            <label for="appointmentNotes" class="block text-sm font-semibold text-darkNavy mb-2"> Reason for Your Visit (Optional) </label> 
+            <textarea id="appointmentNotes" name="additional_notes" rows="4" placeholder="Please briefly describe the reason for your appointment or include any information that may help us prepare for your visit." class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"></textarea> 
+            
+            <button id="appointmentSubmitBtn" type="submit" class="w-full bg-medicalNavy hover:bg-medicalGold hover:text-darkNavy text-white font-semibold py-3 rounded-xl transition-all duration-300"> Request Appointment </button>
             </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase">Preferred Time</label>
-                <input type="time" id="appointment-time" class="w-full border border-slate-300 rounded-xl px-4 py-2 mt-1">
-            </div>
-            <button onclick="closeBookingModal()" class="w-full bg-medicalNavy text-white font-bold py-3 rounded-xl hover:bg-medicalGold transition">Confirm Request</button>
+        </form>
         </div>
     </div>
 </div>
@@ -1033,7 +1135,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dateInput = document.getElementById('appointment-date');
+            const dateInput = document.ElementById('appointment-date');
             if (dateInput) {
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.setAttribute('min', today);
@@ -1041,13 +1143,13 @@
         });
 
         window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
+            const preloader = document.ElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
         });
 
         // Toggle Sidebar Function
         function toggleSidebar(shouldOpen) {
-            const menu = document.getElementById('sidebarMenu');
+            const menu = document.ElementById('sidebarMenu');
             if (shouldOpen) {
                 menu.classList.add('open-drawer');
                 menu.style.transform = "translateX(0)";
@@ -1057,7 +1159,7 @@
             }
         }
         const hotspot = document.querySelector(".left-hotspot");
-const sidebar = document.getElementById("sidebarMenu");
+const sidebar = document.ElementById("sidebarMenu");
 
 if (hotspot && sidebar) {
     hotspot.addEventListener("mouseenter", () => {
@@ -1073,15 +1175,15 @@ if (hotspot && sidebar) {
         function navigateToTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active-tab'));
-            const activeTarget = document.getElementById('tab-' + tabId);
-            if(activeTarget) activeTarget.classList.add('active-tab');
+            const activeTar = document.ElementById('tab-' + tabId);
+            if(activeTar) activeTar.classList.add('active-tab');
             
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('text-medicalNavy', 'font-semibold', 'bg-slate-100');
                 link.classList.add('hover:text-medicalNavy', 'hover:bg-slate-50');
             });
-            const selectedNavLink = document.getElementById('nav-' + tabId);
+            const selectedNavLink = document.ElementById('nav-' + tabId);
             if(selectedNavLink) selectedNavLink.classList.add('text-medicalNavy', 'font-semibold', 'bg-slate-100');
             
             if (tabId === 'rates') {
@@ -1092,8 +1194,8 @@ if (hotspot && sidebar) {
 
         // Cash Rate Odometer script engine
         function animateCashOdometer(startValue, endValue, duration) {
-            const targetNode = document.getElementById('cashRateOdometer');
-            if (!targetNode) return;
+            const tarNode = document.ElementById('cashRateOdometer');
+            if (!tarNode) return;
             
             let startTime = null;
             function step(currentTime) {
@@ -1109,16 +1211,31 @@ if (hotspot && sidebar) {
         }
 
         // Safe Background submission pipeline
-        function triggerFormSuccessNotification(formElementId) {
-            if(formElementId === 'modalbookingform') {
-                closeBookingModal();
-            }
-            setTimeout(() => {
-                alert("Success! Your medical dispatch payload has been sent successfully. Our reception desk has received the secure data log and will contact you shortly.");
-                document.getElementById(formElementId).reset();
-                navigateToTab('home');
-            }, 500);
-        }
+        function triggerFormSuccessNotification(formId){
+
+    document.getElementById(formId).reset();
+
+    if(formId === "appointmentForm"){
+
+        closeBookingModal();
+
+        showSuccessModal(
+            "Appointment Request Received",
+            "Thank you for choosing Olwemihla Health Services. Your appointment request has been received successfully. A member of our team will contact you shortly to confirm your appointment."
+        );
+
+    }
+
+    else{
+
+        showSuccessModal(
+            "Enquiry Sent",
+            "Thank you for getting in touch with Olwemihla Health Services. We've received your enquiry and will respond as soon as possible during our operating hours."
+        );
+
+    }
+
+}
 
         function navigateToSubService(subviewId) {
             navigateToTab('services');
@@ -1208,6 +1325,116 @@ if (hotspot && sidebar) {
             document.getElementById('aiInputPrompt').value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
         }
+
+        function showSuccessModal(title, message) {
+
+    document.getElementById("successTitle").textContent = title;
+    document.getElementById("successMessage").textContent = message;
+
+    const modal = document.getElementById("successModal");
+    const content = document.getElementById("successModalContent");
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+
+    setTimeout(() => {
+        content.classList.remove("scale-95","opacity-0");
+        content.classList.add("scale-100","opacity-100");
+    },50);
+
+}
+
+function closeSuccessModal(){
+
+    const modal = document.getElementById("successModal");
+    const content = document.getElementById("successModalContent");
+
+    content.classList.remove("scale-100","opacity-100");
+    content.classList.add("scale-95","opacity-0");
+
+    setTimeout(()=>{
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+    },250);
+
+}
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "O-D4ENKehgGYEVNAl"
+});
+
+document.getElementById("officeInquiryForm").addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const button = document.getElementById("officeSubmitBtn");
+
+    button.disabled = true;
+
+    button.innerHTML = "Sending...";
+
+    emailjs.send(
+        "service_farcqmm",
+        "template_73femoh",
+        {
+            patient_name: document.getElementById("officeName").value,
+            phone_number: document.getElementById("officePhone").value,
+            email_address: document.getElementById("officeEmail").value,
+            subject: document.getElementById("officeSubject").value,
+            message: document.getElementById("officeMessage").value
+        }
+    )
+
+    .then(() => {
+
+        button.disabled = false;
+        button.innerHTML = "Send Enquiry";
+
+        triggerFormSuccessNotification("officeInquiryForm");
+
+    })
+
+    .catch((error) => {
+
+        console.error(error);
+
+        button.disabled = false;
+        button.innerHTML = "Send Enquiry";
+
+        alert("Sorry, something went wrong. Please try again.");
+
+    });
+
+});
+</script>
+    <!-- Success Notification -->
+<div id="successModal" class="fixed inset-0 bg-darkNavy/70 backdrop-blur-sm hidden items-center justify-center z-[200]">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full mx-4 p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="successModalContent">
+
+        <div class="w-20 h-20 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+        </div>
+
+        <h3 id="successTitle" class="text-2xl font-bold text-darkNavy mb-3">
+            Success!
+        </h3>
+
+        <p id="successMessage" class="text-slate-600 leading-relaxed">
+            Your request has been submitted successfully.
+        </p>
+
+        <button
+            onclick="closeSuccessModal()"
+            class="mt-8 w-full bg-medicalNavy text-white font-semibold py-3 rounded-xl hover:bg-medicalGold hover:text-darkNavy transition-all duration-300">
+            Close
+        </button>
+
+    </div>
+</div>
 </body>
 </html>
