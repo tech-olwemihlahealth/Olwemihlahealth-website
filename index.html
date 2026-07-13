@@ -1210,33 +1210,6 @@ if (hotspot && sidebar) {
             window.requestAnimationFrame(step);
         }
 
-        // Safe Background submission pipeline
-        function triggerFormSuccessNotification(formId){
-
-    document.getElementById(formId).reset();
-
-    if(formId === "appointmentForm"){
-
-        closeBookingModal();
-
-        showSuccessModal(
-            "Appointment Request Received",
-            "Thank you for choosing Olwemihla Health Services. Your appointment request has been received successfully. A member of our team will contact you shortly to confirm your appointment."
-        );
-
-    }
-
-    else{
-
-        showSuccessModal(
-            "Enquiry Sent",
-            "Thank you for getting in touch with Olwemihla Health Services. We've received your enquiry and will respond as soon as possible during our operating hours."
-        );
-
-    }
-
-}
-
         function navigateToSubService(subviewId) {
             navigateToTab('services');
             document.getElementById('services-main-list').classList.remove('block');
@@ -1326,7 +1299,16 @@ if (hotspot && sidebar) {
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function showSuccessModal(title, message) {
+}
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "O-D4ENKehgGYEVNAl"
+});
+
+    function showSuccessModal(title, message) {
 
     document.getElementById("successTitle").textContent = title;
     document.getElementById("successMessage").textContent = message;
@@ -1356,15 +1338,33 @@ function closeSuccessModal(){
         modal.classList.remove("flex");
         modal.classList.add("hidden");
     },250);
+}
+
+    function triggerFormSuccessNotification(formId){
+
+    document.getElementById(formId).reset();
+
+    if(formId === "appointmentForm"){
+
+        closeBookingModal();
+
+        showSuccessModal(
+            "Appointment Request Received",
+            "Thank you for choosing Olwemihla Health Services. Your appointment request has been received successfully. A member of our team will contact you shortly to confirm your appointment."
+        );
+
+    }
+
+    else{
+
+        showSuccessModal(
+            "Enquiry Sent",
+            "Thank you for getting in touch with Olwemihla Health Services. We've received your enquiry and will respond as soon as possible during our operating hours."
+        );
+
+    }
 
 }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-emailjs.init({
-    publicKey: "O-D4ENKehgGYEVNAl"
-});
 
 document.getElementById("officeInquiryForm").addEventListener("submit", function (e) {
 
