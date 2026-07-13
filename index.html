@@ -952,7 +952,7 @@
 
         // Toggle Sidebar Function
         function toggleSidebar(shouldOpen) {
-            const menu = document.getElementById('');
+            const menu = document.getElementById('sidebarMenu');
             if (shouldOpen) {
                 menu.classList.add('open-drawer');
                 menu.style.transform = "translateX(0)";
@@ -964,13 +964,15 @@
         const hotspot = document.querySelector(".left-hotspot");
 const sidebar = document.getElementById("sidebarMenu");
 
-hotspot.addEventListener("mouseenter", () => {
-    toggleSidebar(true);
-});
+if (hotspot && sidebar) {
+    hotspot.addEventListener("mouseenter", () => {
+        toggleSidebar(true);
+    });
 
-sidebar.addEventListener("mouseleave", () => {
-    toggleSidebar(false);
-});
+    sidebar.addEventListener("mouseleave", () => {
+        toggleSidebar(false);
+    });
+}
 
         // Global Navigation Router
         function navigateToTab(tabId) {
