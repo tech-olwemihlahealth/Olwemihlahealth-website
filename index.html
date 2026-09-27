@@ -981,12 +981,31 @@
 
     </main>
 
-    <div id="bookingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm">
-    <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl">
-        <h3 class="text-lg font-bold text-darkNavy mb-4">Request Appointment</h3>
-        <p class="text-sm text-slate-500 mb-6">
-    Complete the form below and we'll contact you shortly to confirm your appointment.
-</p>
+    <div id="bookingModal"
+     class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm">
+
+    <div id="modalContainer"
+         class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl
+                transform scale-95 opacity-0 transition-all duration-300">
+
+        <div class="flex items-start justify-between mb-4">
+            <div>
+                <h3 class="text-lg font-bold text-darkNavy">
+                    Request Appointment
+                </h3>
+                <p class="text-sm text-slate-500 mt-1">
+                    Complete the form below and we'll contact you shortly to confirm your appointment.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                onclick="closeBookingModal()"
+                aria-label="Close appointment form"
+                class="text-slate-400 hover:text-darkNavy text-xl font-bold">
+                ×
+            </button>
+        </div>
         <form id="appointmentForm" class="space-y-4">
             <div class="grid md:grid-cols-2 gap-4">
             <label for="appointmentName" class="block text-sm font-semibold text-darkNavy mb-2"> Full Name </label> 
@@ -1033,7 +1052,6 @@
         </form>
         </div>
     </div>
-</div>
 
     <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         <a href="https://wa.me/27705071168?text=Hello%20Olwemihla%20Health%20Services.%20I%20would%20like%20to%20book%20an%20appointment."
@@ -1117,10 +1135,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dateInput = document.getElementById('appointment-date');
+            const dateInput = document.getElementById('appointmentDate');
+
             if (dateInput) {
-                const today = new Date().toISOString().split('T')[0];
-                dateInput.setAttribute('min', today);
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
             }
         });
 
