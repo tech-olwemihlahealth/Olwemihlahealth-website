@@ -66,79 +66,38 @@
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
 
-        /* PRELOADER INTERACTIVE DISSOLVE ENGINE */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: #0F1442;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-        }
-        
-        .preloader-branding {
-            opacity: 0;
-            filter: blur(25px);
-            transform: scale(0.92);
-            animation: dissolveAssemble 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes dissolveAssemble {
-            0% { opacity: 0; filter: blur(25px); transform: scale(0.92); }
-            60% { opacity: 0.8; filter: blur(6px); transform: scale(1.02); }
-            100% { opacity: 1; filter: blur(0px); transform: scale(1); }
-        }
-
-        .preloader-ring {
-            border: 2px solid transparent;
-            border-top-color: #C5A059;
-            border-bottom-color: #C5A059;
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* BURGER SLIDE DRAWER MENU POSITIONED OVER NAV */
+        /* BURGER SLIDE DRAWER MENU */
         #sidebarMenu {
             transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        #sidebarMenu {
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-#sidebarMenu.open-drawer {
-    transform: translateX(0);
-}
+        #sidebarMenu.open-drawer {
+            transform: translateX(0);
+        }
+        #sidebarBackdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #sidebarBackdrop.open-drawer {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .chat-container {
             max-height: 380px;
             overflow-y: auto;
         }
+        #serviceCarouselTrack::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="bg-clinicalSlate text-slate-800 antialiased flex flex-col min-h-screen relative">
 
 
-    <div id="preloader">
-        <div class="relative flex flex-col items-center">
-            <div class="preloader-ring w-32 h-32 absolute -top-4"></div>
-            <div class="preloader-branding flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-2xl border-2 border-medicalGold/40 mb-4 p-1 bg-white/5">
-                    <img src="badge(non-transparent).png" alt="Olwemihla Loading Identity" class="w-full h-full object-cover rounded-xl">
-                </div>
-                <h2 class="text-2xl font-bold tracking-tight text-white">Olwemihla</h2>
-                <p class="text-[10px] uppercase tracking-widest text-medicalGold font-semibold mt-1">Health Services</p>
-            </div>
-        </div>
-    </div>
+    <div id="sidebarBackdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-darkNavy/50 backdrop-blur-sm z-40"></div>
 
-    <div class="left-hotspot fixed left-0 top-0 bottom-0 w-6 z-50">
-        <div id="sidebarMenu" class="fixed left-0 top-0 bottom-0 w-80 bg-darkNavy text-white p-6 flex flex-col justify-between shadow-2xl border-r border-slate-800/80 backdrop-blur-xl">
+    <div>
+        <div id="sidebarMenu" class="fixed left-0 top-0 bottom-0 w-80 bg-darkNavy text-white p-6 flex flex-col justify-between shadow-2xl border-r border-slate-800/80 backdrop-blur-xl z-50">
             <div class="mt-20 space-y-8">
                 <div class="border-b border-slate-800 pb-4">
                     <div class="flex justify-between items-center">
@@ -187,7 +146,7 @@
             </div>
 
             <div class="border-t border-slate-800/80 pt-4 text-center">
-                <p class="text-[10px] text-slate-500">Practice Number: Pr No: 1332546</p>
+                <p class="text-[10px] text-slate-500">Practice No: 1332546</p>
                 <button onclick="openBookingModal(); toggleSidebar(false);" class="mt-3 w-full bg-medicalGold text-darkNavy font-bold py-2 rounded-lg text-xs hover:bg-white transition-colors shadow-lg">
                     Request an Appointment
                 </button>
@@ -197,13 +156,13 @@
 
     <div class="bg-darkNavy text-white py-2 px-4 text-xs font-medium border-b border-medicalGold/30 z-30 relative">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-4 md:pl-16">
+            <div class="flex items-center gap-4">
                 <span><strong>General Practitioner:</strong> Dr Dimba</span>
                 <span class="text-slate-400">|</span>
                 <span><strong>Pr No:</strong> 1332546</span>
             </div>
             <div class="flex items-center gap-3 text-medicalGold">
-                <span>Emergency: Call 070 507 1168</span>
+                <span>Reception: 070 507 1168 <span class="text-slate-400 font-normal">(for medical emergencies, call 10177 or go to your nearest hospital)</span></span>
             </div>
         </div>
     </div>
@@ -212,8 +171,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
             
             <div class="flex items-center gap-4">
-                <div class="py-2">
-                    <button onclick="toggleSidebar(true)" aria-label="Toggle Navigation Menu" class="bg-darkNavy text-white w-11 h-11 rounded-xl shadow-md border border-medicalGold/30 flex flex-col items-center justify-center gap-1.5 transition-all duration-300 hover:bg-medicalNavy active:scale-95">
+                <div class="py-2 md:hidden">
+                    <button onclick="toggleSidebar(true)" aria-label="Open navigation menu" class="bg-darkNavy text-white w-11 h-11 rounded-xl shadow-md border border-medicalGold/30 flex flex-col items-center justify-center gap-1.5 transition-all duration-300 hover:bg-medicalNavy active:scale-95">
                         <span class="w-5 h-0.5 bg-white rounded"></span>
                         <span class="w-5 h-0.5 bg-medicalGold rounded"></span>
                         <span class="w-5 h-0.5 bg-white rounded"></span>
@@ -231,22 +190,12 @@
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center space-x-1 font-medium text-sm text-slate-600">
-                <button onclick="navigateToTab('home'); toggleSidebar(false);" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
-    Home
-</button>
-                <button onclick="navigateToTab('services'); toggleSidebar(false);" id="nav-services" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
-    Our Services
-</button>
-                <button onclick="navigateToTab('rates'); toggleSidebar(false);" id="nav-home" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
-    Rates & Medical Aids
-</button>
-                <button onclick="navigateToTab('about'); toggleSidebar(false);" id="nav-about" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
-    Meet Our Dedicated Team
-</button>
-                <button onclick="navigateToTab('contact'); toggleSidebar(false);" id="nav-contact" class="nav-link px-4 py-2 rounded-lg text-medicalNavy font-semibold bg-slate-100 transition duration-200">
-    Contact & Hours
-</button>
+            <div class="hidden md:flex items-center gap-1 font-medium text-sm text-slate-600">
+                <button onclick="navigateToTab('home')" id="nav-home" class="nav-link px-4 py-2 rounded-lg transition duration-200 text-medicalNavy font-semibold bg-slate-100">Home</button>
+                <button onclick="navigateToTab('services')" id="nav-services" class="nav-link px-4 py-2 rounded-lg transition duration-200 hover:text-medicalNavy hover:bg-slate-50">Our Services</button>
+                <button onclick="navigateToTab('rates')" id="nav-rates" class="nav-link px-4 py-2 rounded-lg transition duration-200 hover:text-medicalNavy hover:bg-slate-50">Rates &amp; Medical Aids</button>
+                <button onclick="navigateToTab('about')" id="nav-about" class="nav-link px-4 py-2 rounded-lg transition duration-200 hover:text-medicalNavy hover:bg-slate-50">Meet Our Team</button>
+                <button onclick="navigateToTab('contact')" id="nav-contact" class="nav-link px-4 py-2 rounded-lg transition duration-200 hover:text-medicalNavy hover:bg-slate-50">Contact</button>
             </div>
 
             <div class="flex items-center gap-3">
@@ -294,44 +243,51 @@
                     <h2 class="text-3xl font-bold text-darkNavy">Primary Healthcare Services</h2>
                     <p class="text-slate-500 mt-2">Explore our comprehensive range of medical services, including general consultations, preventative health screenings, chronic disease management, Pap smears, and medical circumcisions.</p>
                 </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:px-16">
-                    <div onclick="navigateToSubService('general-consultations')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">GC</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">General Consultations</h3>
-                        <p class="text-slate-500 text-sm mt-2">Routine clinical check-ups, diagnostic acute illness management, and preventative healthcare mapping.</p>
+
+                <div class="relative">
+                    <div id="serviceCarouselTrack" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-4 px-4 sm:mx-0 sm:px-0" style="scrollbar-width:none;-ms-overflow-style:none;">
+                        <div onclick="navigateToSubService('general-consultations')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">GC</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">General Consultations</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Routine clinical check-ups, diagnostic acute illness management, and preventative healthcare mapping.</p>
+                        </div>
+                        <div onclick="navigateToSubService('medical-certificates')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MC</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Medical Certificates</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Compliant professional verification evaluations for work, school readiness, and statutory requirements.</p>
+                        </div>
+                        <div onclick="navigateToSubService('minor-procedures')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MP</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Minor Outpatient Procedures</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Safe clinical operations including <strong>circumcisions</strong>, sterile wound care, and local anesthetic repairs.</p>
+                        </div>
+                        <div onclick="navigateToSubService('chronic-management')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">CD</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Chronic Disease Management</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Continuous therapeutic management protocols designed for hypertension and diabetes stability.</p>
+                        </div>
+                        <div onclick="navigateToSubService('wellness-screenings')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">WS</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Health Screenings</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Proactive diagnostics aimed at isolating health risk factors before symptoms develop.</p>
+                        </div>
+                        <div onclick="navigateToSubService('pap-smears')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">PS</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Pap Smears</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Routine cervical screening services for early detection and reproductive health maintenance.</p>
+                        </div>
+                        <div onclick="navigateToSubService('medical-circumcision')" class="service-card snap-start shrink-0 w-[260px] sm:w-[280px] flex flex-col bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                            <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">CX</div>
+                            <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors leading-snug min-h-[3.25rem]">Medical Circumcision</h3>
+                            <p class="text-slate-500 text-sm mt-2 flex-1">Safe, professional medical circumcision performed in a sterile clinical environment with comprehensive aftercare and follow-up support.</p>
+                        </div>
                     </div>
-                    <div onclick="navigateToSubService('medical-certificates')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MC</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Medical Certificates</h3>
-                        <p class="text-slate-500 text-sm mt-2">Compliant professional verification evaluations for work, school readiness, and statutory requirements.</p>
+
+                    <div class="flex justify-center items-center gap-4 mt-6">
+                        <button onclick="scrollServiceCarousel(-1)" aria-label="Previous service" class="w-10 h-10 rounded-full border border-slate-300 bg-white text-medicalNavy flex items-center justify-center hover:bg-medicalNavy hover:text-white hover:border-medicalNavy transition-colors">‹</button>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider">Swipe or click to browse</span>
+                        <button onclick="scrollServiceCarousel(1)" aria-label="Next service" class="w-10 h-10 rounded-full border border-slate-300 bg-white text-medicalNavy flex items-center justify-center hover:bg-medicalNavy hover:text-white hover:border-medicalNavy transition-colors">›</button>
                     </div>
-                    <div onclick="navigateToSubService('minor-procedures')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer ring-2 ring-medicalGold/20">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MP</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Minor Outpatient Procedures</h3>
-                        <p class="text-slate-500 text-sm mt-2">Safe clinical operations including <strong>circumcisions</strong>, sterile wound care, and local anesthetic repairs.</p>
-                    </div>
-                    <div onclick="navigateToSubService('chronic-management')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">CD</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Chronic Disease Management</h3>
-                        <p class="text-slate-500 text-sm mt-2">Continuous therapeutic management protocols designed for hypertension and diabetes stability.</p>
-                    </div>
-                    <div onclick="navigateToSubService('wellness-screenings')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">WS</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Health Screenings</h3>
-                        <p class="text-slate-500 text-sm mt-2">Proactive diagnostics aimed at isolating health risk factors before symptoms develop.</p>
-                    </div>
-                    <div onclick="navigateToSubService('pap-smears')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                        <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">PS</div>
-                        <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Pap Smears</h3>
-                        <p class="text-slate-500 text-sm mt-2">Routine cervical screening services for early detection and reproductive health maintenance.</p>
-                    </div>
-                    <div onclick="navigateToSubService('medical-circumcision')" class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-    <div class="w-12 h-12 bg-medicalNavy/10 text-medicalNavy rounded-xl flex items-center justify-center mb-5 font-bold group-hover:bg-medicalNavy group-hover:text-white transition-all duration-300">MC</div>
-    <h3 class="text-lg font-bold text-darkNavy group-hover:text-medicalNavy transition-colors">Medical Circumcision</h3>
-    <p class="text-slate-500 text-sm mt-2">
-        Safe, professional medical circumcision performed in a sterile clinical environment with comprehensive aftercare and follow-up support.
-    </p>
-</div>
                 </div>
             </section>
         </div>
@@ -347,99 +303,88 @@
                 
                 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:px-24">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div onclick="navigateToSubService('general-consultations')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('general-consultations')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="general consultations.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">General Consultations</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">General Consultations</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Comprehensive evaluation of underlying clinical profiles. This involves direct acute symptom tracking, prescriptive intervention regimens...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Comprehensive evaluation of underlying clinical profiles. This involves direct acute symptom tracking, prescriptive intervention regimens...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('medical-certificates')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('medical-certificates')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="medical certificates.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">Medical Certificates</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Medical Certificates</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Official medical documentation following rigorous clinical examinations. Fully aligned with South African statutory guidelines...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Official medical documentation following rigorous clinical examinations. Fully aligned with South African statutory guidelines...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('minor-procedures')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer ring-2 ring-medicalGold/30">
+                        <div onclick="navigateToSubService('minor-procedures')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="minor procedures.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <span class="absolute top-3 right-3 bg-medicalGold text-darkNavy text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">In-Demand</span>
-                                <h3 class="text-xl font-bold text-white relative z-10">Minor Outpatient Procedures</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Minor Outpatient Procedures</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Outpatient surgical actions completed inside our customized emergency intervention suite including <strong>medical circumcisions</strong>...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Outpatient procedures completed in our treatment suite, including <strong>medical circumcisions</strong>, wound care, and suturing...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('chronic-management')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('chronic-management')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="chronic disease management.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">Chronic Disease Management</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Chronic Disease Management</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Continuous therapeutic management protocols designed for long-term health anomalies. We focus on lifestyle engineering...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Continuous therapeutic management protocols designed for long-term health anomalies. We focus on lifestyle engineering...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('wellness-screenings')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('wellness-screenings')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="wellness screenings.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">Preventative Health Screenings</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Preventative Health Screenings</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Proactive diagnostic biological system stress reviews aimed at isolating dynamic health metrics before symptoms occur...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Proactive diagnostic biological system stress reviews aimed at isolating dynamic health metrics before symptoms occur...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
 
-                        <div onclick="navigateToSubService('pap-smears')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                        <div onclick="navigateToSubService('pap-smears')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
                             <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
                                 <img src="patient education.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-                                <h3 class="text-xl font-bold text-white relative z-10">Pap Smears</h3>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Pap Smears</h3>
                             </div>
-                            <div class="p-6">
-                                <p class="text-slate-600 text-sm leading-relaxed mb-4">Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain...</p>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Routine cervical screening services focused on the early detection of cervical abnormalities, helping women maintain...</p>
                                 <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
                             </div>
                         </div>
-                        <div onclick="navigateToSubService('medical-circumcision')" class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
-    <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
-        <img src="minor procedures.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
-
-        <h3 class="text-xl font-bold text-white relative z-10">
-            Medical Circumcision
-        </h3>
-    </div>
-
-    <div class="p-6">
-        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            Professional medical circumcision performed with patient comfort, safety, and privacy at the centre of every procedure...
-        </p>
-
-        <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">
-            Learn More
-            <span>→</span>
-        </span>
-    </div>
-</div>
+                        <div onclick="navigateToSubService('medical-circumcision')" class="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group cursor-pointer">
+                            <div class="h-32 bg-darkNavy p-6 flex items-end relative overflow-hidden">
+                                <img src="medical circumcision.png" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity group-hover:scale-110 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-darkNavy to-transparent opacity-80"></div>
+                                <h3 class="text-xl font-bold text-white relative z-10 leading-snug">Medical Circumcision</h3>
+                            </div>
+                            <div class="p-6 flex flex-col flex-1">
+                                <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">Professional medical circumcision performed with patient comfort, safety, and privacy at the centre of every procedure...</p>
+                                <span class="text-xs font-bold text-medicalNavy group-hover:text-medicalGold inline-flex items-center gap-1 transition-colors">Learn More <span>→</span></span>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -771,7 +716,7 @@
                     </div>
                 </div>
                 
-                <div class="max-w-4xl">
+                <div class="max-w-4xl mt-8">
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-8 hover:shadow-xl transition-all duration-300">
                         <div class="w-full md:w-56 h-56 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 relative group">
                             <img src="nhlanhla1.jpeg" class="w-full h-full object-cover object-top filter grayscale hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-500">
@@ -779,7 +724,7 @@
                         <div class="flex flex-col justify-center">
                             <span class="text-xs font-bold uppercase tracking-wider text-medicalGold">General Practitioner</span>
                             <h3 class="text-3xl font-bold text-darkNavy mt-1">Dr Dimba</h3>
-                            <p class="text-xs text-slate-400 font-semibold mt-1">Practice Number: Pr No: 1332546</p>
+                            <p class="text-xs text-slate-400 font-semibold mt-1">Practice No: 1332546</p>
                             <p class="text-slate-600 text-sm mt-4 leading-relaxed">
                                 <p>Dr N. Dimba is a dedicated General Practitioner committed to providing compassionate, high-quality healthcare for individuals and families. With a patient-centred approach, he takes the time to understand each patient's concerns, provide thorough medical assessments, and develop personalised treatment plans that support both immediate recovery and long-term wellbeing.</p> 
                             
@@ -789,7 +734,7 @@
                     </div>
                 </div>
 
-                <div class="max-w-4xl">
+                <div class="max-w-4xl mt-8">
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-8 hover:shadow-xl transition-all duration-300">
                         <div class="w-full md:w-56 h-56 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 relative group">
                             <img src="mzisi.jpeg" class="w-full h-full object-cover object-top filter grayscale hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-500">
@@ -831,6 +776,15 @@
                                 <p class="text-slate-600 text-sm mt-1"><strong>Call Center (Also available on WhatsApp):</strong> 070 507 1168</p>
                                 <p class="text-slate-600 text-sm"><strong>Email (General):</strong> info@olwemihlahealth.co.za</p>
                                 <p class="text-slate-600 text-sm"><strong>Email (Bookings):</strong> bookings@olwemihlahealth.co.za</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 border-t border-slate-100 pt-6 group">
+                            <div class="w-10 h-10 bg-medicalNavy/10 text-medicalNavy rounded-lg flex items-center justify-center font-bold flex-shrink-0 group-hover:bg-medicalNavy group-hover:text-white transition-colors duration-300">H</div>
+                            <div>
+                                <h4 class="font-bold text-darkNavy text-sm uppercase tracking-wider">Opening Hours</h4>
+                                <p class="text-slate-600 text-sm mt-1">Monday – Sunday, including public holidays: <strong>08:00 – 17:00</strong></p>
+                                <p class="text-slate-400 text-xs mt-1">Please double-check these hours are correct and up to date.</p>
                             </div>
                         </div>
                     </div>
@@ -946,13 +900,11 @@
 
     </div>
 </section>
-            
-        </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:px-24">
             <div class="bg-white border border-slate-200 p-6 shadow-xl rounded-2xl">
                 <h3 class="text-xl font-bold text-darkNavy">
-    Get in Touch
+    Still Have a Question?
 </h3>
 
 <p class="text-sm text-slate-500 mt-2 mb-6">
@@ -1026,6 +978,7 @@
                     </div>
                 </form>
             </div>
+        </div>
         </div>
 
     </main>
@@ -1202,34 +1155,57 @@
             }
         });
 
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
-        });
-
         // Toggle Sidebar Function
         function toggleSidebar(shouldOpen) {
             const menu = document.getElementById('sidebarMenu');
+            const backdrop = document.getElementById('sidebarBackdrop');
             if (shouldOpen) {
                 menu.classList.add('open-drawer');
                 menu.style.transform = "translateX(0)";
+                if (backdrop) backdrop.classList.add('open-drawer');
+                document.body.classList.add('overflow-hidden');
             } else {
                 menu.classList.remove('open-drawer');
                 menu.style.transform = "translateX(-100%)";
+                if (backdrop) backdrop.classList.remove('open-drawer');
+                document.body.classList.remove('overflow-hidden');
             }
         }
-        const hotspot = document.querySelector(".left-hotspot");
-const sidebar = document.getElementById("sidebarMenu");
 
-if (hotspot && sidebar) {
-    hotspot.addEventListener("mouseenter", () => {
-        toggleSidebar(true);
-    });
+        // Homepage services carousel
+        function scrollServiceCarousel(direction) {
+            const track = document.getElementById('serviceCarouselTrack');
+            if (!track) return;
+            const card = track.querySelector('.service-card');
+            const step = card ? card.offsetWidth + 24 : 300;
+            const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+            if (direction > 0 && atEnd) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (direction < 0 && track.scrollLeft <= 10) {
+                track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: step * direction, behavior: 'smooth' });
+            }
+        }
 
-    sidebar.addEventListener("mouseleave", () => {
-        toggleSidebar(false);
-    });
-}
+        let serviceCarouselTimer = null;
+        function startServiceCarouselAutoplay() {
+            stopServiceCarouselAutoplay();
+            serviceCarouselTimer = setInterval(() => scrollServiceCarousel(1), 4500);
+        }
+        function stopServiceCarouselAutoplay() {
+            if (serviceCarouselTimer) clearInterval(serviceCarouselTimer);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('serviceCarouselTrack');
+            if (track) {
+                startServiceCarouselAutoplay();
+                track.addEventListener('mouseenter', stopServiceCarouselAutoplay);
+                track.addEventListener('mouseleave', startServiceCarouselAutoplay);
+                track.addEventListener('touchstart', stopServiceCarouselAutoplay, { passive: true });
+            }
+        });
 
         // Global Navigation Router
         function navigateToTab(tabId) {
@@ -1262,7 +1238,7 @@ if (hotspot && sidebar) {
                 if (!startTime) startTime = currentTime;
                 const progress = Math.min((currentTime - startTime) / duration, 1);
                 const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
-                targetNode.innerText = currentValue;
+                tarNode.innerText = currentValue;
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
                 }
