@@ -66,6 +66,41 @@
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
 
+        /* PRELOADER INTERACTIVE DISSOLVE ENGINE */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0F1442;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+        }
+        
+        .preloader-branding {
+            opacity: 0;
+            filter: blur(25px);
+            transform: scale(0.92);
+            animation: dissolveAssemble 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes dissolveAssemble {
+            0% { opacity: 0; filter: blur(25px); transform: scale(0.92); }
+            60% { opacity: 0.8; filter: blur(6px); transform: scale(1.02); }
+            100% { opacity: 1; filter: blur(0px); transform: scale(1); }
+        }
+
+        .preloader-ring {
+            border: 2px solid transparent;
+            border-top-color: #C5A059;
+            border-bottom-color: #C5A059;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
         /* BURGER SLIDE DRAWER MENU POSITIONED OVER NAV */
         #sidebarMenu {
             transform: translateX(-100%);
@@ -87,6 +122,20 @@
     </style>
 </head>
 <body class="bg-clinicalSlate text-slate-800 antialiased flex flex-col min-h-screen relative">
+
+
+    <div id="preloader">
+        <div class="relative flex flex-col items-center">
+            <div class="preloader-ring w-32 h-32 absolute -top-4"></div>
+            <div class="preloader-branding flex flex-col items-center text-center">
+                <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-2xl border-2 border-medicalGold/40 mb-4 p-1 bg-white/5">
+                    <img src="badge(non-transparent).png" alt="Olwemihla Loading Identity" class="w-full h-full object-cover rounded-xl">
+                </div>
+                <h2 class="text-2xl font-bold tracking-tight text-white">Olwemihla</h2>
+                <p class="text-[10px] uppercase tracking-widest text-medicalGold font-semibold mt-1">Health Services</p>
+            </div>
+        </div>
+    </div>
 
     <div class="left-hotspot fixed left-0 top-0 bottom-0 w-6 z-50">
         <div id="sidebarMenu" class="fixed left-0 top-0 bottom-0 w-80 bg-darkNavy text-white p-6 flex flex-col justify-between shadow-2xl border-r border-slate-800/80 backdrop-blur-xl">
@@ -981,77 +1030,88 @@
 
     </main>
 
-    <div id="bookingModal"
-     class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm">
-
-    <div id="modalContainer"
-         class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl
-                transform scale-95 opacity-0 transition-all duration-300">
-
-        <div class="flex items-start justify-between mb-4">
+    <div id="bookingModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-darkNavy/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle" aria-describedby="bookingModalDescription">
+    <div id="modalContainer" tabindex="-1" class="bg-white rounded-2xl p-6 max-w-sm w-full max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+        <div class="flex items-start justify-between gap-4 mb-4">
             <div>
-                <h3 class="text-lg font-bold text-darkNavy">
-                    Request Appointment
-                </h3>
-                <p class="text-sm text-slate-500 mt-1">
+                <h3 id="bookingModalTitle" class="text-lg font-bold text-darkNavy">Request Appointment</h3>
+                <p id="bookingModalDescription" class="text-sm text-slate-500 mt-1">
                     Complete the form below and we'll contact you shortly to confirm your appointment.
                 </p>
             </div>
-
             <button
+                id="bookingModalClose"
                 type="button"
                 onclick="closeBookingModal()"
                 aria-label="Close appointment form"
-                class="text-slate-400 hover:text-darkNavy text-xl font-bold">
-                ×
+                class="shrink-0 w-9 h-9 rounded-full text-slate-500 hover:text-darkNavy hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-medicalNavy transition-colors text-xl leading-none">
+                <span aria-hidden="true">×</span>
             </button>
         </div>
+
+        <p class="text-xs text-slate-500 mb-4"><span aria-hidden="true">*</span> Required fields</p>
+
         <form id="appointmentForm" class="space-y-4">
-            <div class="grid md:grid-cols-2 gap-4">
-            <label for="appointmentName" class="block text-sm font-semibold text-darkNavy mb-2"> Full Name </label> 
-            <input type="text" id="appointmentName" name="patient_name" required placeholder="Enter your full name" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-            
-            <label for="appointmentPhone" class="block text-sm font-semibold text-darkNavy mb-2"> Contact Number </label> 
-            <input type="tel" id="appointmentPhone" name="phone_number" required placeholder="e.g. 082 123 4567" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-            
-            <label for="appointmentEmail" class="block text-sm font-semibold text-darkNavy mb-2"> Email Address </label> 
-            <input type="email" id="appointmentEmail" name="email_address" required placeholder="Enter your email address" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-            
-            <label for="appointmentService" class="block text-sm font-semibold text-darkNavy mb-2"> Service Required </label> 
-            <select id="appointmentService" name="service_required" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-                <option value="">Select a service</option> 
-                <option>General Consultation</option> 
-                <option>Medical Certificate</option> 
-                <option>Chronic Disease Management</option> 
-                <option>Preventative Health Screening</option> 
-                <option>Pap Smear</option> 
-                <option>Minor Outpatient Procedure</option> 
-                <option>Medical Circumcision</option> 
-                <option>Unsure / I'd like advice</option> 
-            </select> 
-            
-            <label for="appointmentDate" class="block text-sm font-semibold text-darkNavy mb-2"> Preferred Appointment Date </label> 
-            <input type="date" min="" id="appointmentDate" name="preferred_date" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-            
-            <label for="appointmentTime" class="block text-sm font-semibold text-darkNavy mb-2"> Preferred Time </label> 
-            <select id="appointmentTime" name="preferred_time" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-                <option value="">Select a preferred time</option> 
-                <option>Morning (08:00 – 12:00)</option> 
-                <option>Afternoon (12:00 – 16:00)</option> 
-                <option>No Preference</option> 
-            </select> 
-            
-            <label for="appointmentMedicalAid" class="block text-sm font-semibold text-darkNavy mb-2"> Medical Aid (Optional) </label> 
-            <input type="text" id="appointmentMedicalAid" name="medical_aid" placeholder="e.g. Discovery Health" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"> 
-            
-            <label for="appointmentNotes" class="block text-sm font-semibold text-darkNavy mb-2"> Reason for Your Visit (Optional) </label> 
-            <textarea id="appointmentNotes" name="additional_notes" rows="4" placeholder="Please briefly describe the reason for your appointment or include any information that may help us prepare for your visit." class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy bg-white"></textarea> 
-            
-            <button id="appointmentSubmitBtn" type="submit" class="w-full bg-medicalNavy hover:bg-medicalGold hover:text-darkNavy text-white font-semibold py-3 rounded-xl transition-all duration-300"> Request Appointment </button>
+            <div>
+                <label for="appointmentName" class="block text-sm font-semibold text-darkNavy mb-2">Full Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="appointmentName" name="patient_name" autocomplete="name" required placeholder="Enter your full name" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
             </div>
+
+            <div>
+                <label for="appointmentPhone" class="block text-sm font-semibold text-darkNavy mb-2">Contact Number <span aria-hidden="true">*</span></label>
+                <input type="tel" id="appointmentPhone" name="phone_number" autocomplete="tel" inputmode="tel" required placeholder="e.g. 082 123 4567" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+            </div>
+
+            <div>
+                <label for="appointmentEmail" class="block text-sm font-semibold text-darkNavy mb-2">Email Address <span class="font-normal text-slate-500">(Optional)</span></label>
+                <input type="email" id="appointmentEmail" name="email_address" autocomplete="email" placeholder="Enter your email address" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+            </div>
+
+            <div>
+                <label for="appointmentService" class="block text-sm font-semibold text-darkNavy mb-2">Service Required <span aria-hidden="true">*</span></label>
+                <select id="appointmentService" name="service_required" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+                    <option value="">Select a service</option>
+                    <option>General Consultation</option>
+                    <option>Medical Certificate</option>
+                    <option>Chronic Disease Management</option>
+                    <option>Preventative Health Screening</option>
+                    <option>Pap Smear</option>
+                    <option>Minor Outpatient Procedure</option>
+                    <option>Medical Circumcision</option>
+                    <option>Unsure / I'd like advice</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="appointmentDate" class="block text-sm font-semibold text-darkNavy mb-2">Preferred Date <span aria-hidden="true">*</span></label>
+                <input type="date" id="appointmentDate" name="preferred_date" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+            </div>
+
+            <div>
+                <label for="appointmentTime" class="block text-sm font-semibold text-darkNavy mb-2">Preferred Time <span aria-hidden="true">*</span></label>
+                <select id="appointmentTime" name="preferred_time" required class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+                    <option value="">Select a preferred time</option>
+                    <option>Morning (08:00 – 12:00)</option>
+                    <option>Afternoon (12:00 – 16:00)</option>
+                    <option>No Preference</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="appointmentMedicalAid" class="block text-sm font-semibold text-darkNavy mb-2">Medical Aid <span class="font-normal text-slate-500">(Optional)</span></label>
+                <input type="text" id="appointmentMedicalAid" name="medical_aid" autocomplete="organization" placeholder="e.g. Discovery Health" class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white">
+            </div>
+
+            <div>
+                <label for="appointmentNotes" class="block text-sm font-semibold text-darkNavy mb-2">Reason for Your Visit <span class="font-normal text-slate-500">(Optional)</span></label>
+                <textarea id="appointmentNotes" name="additional_notes" rows="4" placeholder="Please briefly describe the reason for your appointment or include any information that may help us prepare for your visit." class="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalNavy focus:ring-2 focus:ring-medicalNavy/20 bg-white"></textarea>
+            </div>
+
+            <button id="appointmentSubmitBtn" type="submit" class="w-full bg-medicalNavy hover:bg-medicalGold hover:text-darkNavy focus:outline-none focus:ring-2 focus:ring-medicalNavy focus:ring-offset-2 text-white font-semibold py-3 rounded-xl transition-all duration-300">Request Appointment</button>
         </form>
         </div>
     </div>
+</div>
 
     <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         <a href="https://wa.me/27705071168?text=Hello%20Olwemihla%20Health%20Services.%20I%20would%20like%20to%20book%20an%20appointment."
@@ -1136,11 +1196,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dateInput = document.getElementById('appointmentDate');
-
             if (dateInput) {
-            const today = new Date().toISOString().split('T')[0];
-            dateInput.min = today;
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
             }
+        });
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }, 2200);
         });
 
         // Toggle Sidebar Function
@@ -1224,19 +1288,86 @@ if (hotspot && sidebar) {
             subviews.forEach(view => view.classList.remove('active-subview'));
         }
 
+        let bookingModalLastFocusedElement = null;
+
+        function getBookingModalFocusableElements() {
+            const modal = document.getElementById('bookingModal');
+            if (!modal) return [];
+            return Array.from(modal.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            ));
+        }
+
         function openBookingModal() {
             const modal = document.getElementById('bookingModal');
             const container = document.getElementById('modalContainer');
+            if (!modal || !container) return;
+
+            bookingModalLastFocusedElement = document.activeElement;
             modal.classList.remove('hidden');
-            setTimeout(() => { container.classList.remove('scale-95', 'opacity-0'); container.classList.add('scale-100', 'opacity-100'); }, 50);
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+
+            requestAnimationFrame(() => {
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                document.getElementById('appointmentName')?.focus();
+            }, 50);
         }
 
         function closeBookingModal() {
             const modal = document.getElementById('bookingModal');
             const container = document.getElementById('modalContainer');
-            container.classList.remove('scale-100', 'opacity-100'); container.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            if (!modal || !container) return;
+
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+                if (bookingModalLastFocusedElement && typeof bookingModalLastFocusedElement.focus === 'function') {
+                    bookingModalLastFocusedElement.focus();
+                }
+            }, 300);
         }
+
+        document.addEventListener('keydown', (event) => {
+            const modal = document.getElementById('bookingModal');
+            if (!modal || modal.classList.contains('hidden')) return;
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeBookingModal();
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusable = getBookingModalFocusableElements();
+                if (!focusable.length) return;
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        document.getElementById('bookingModal')?.addEventListener('click', (event) => {
+            if (event.target.id === 'bookingModal') {
+                closeBookingModal();
+            }
+        });
 
         function toggleAIBotWindow() {
             const panel = document.getElementById('aiBotWindow');
